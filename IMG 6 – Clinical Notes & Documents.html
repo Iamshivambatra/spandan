@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Notes & Documents · B/O Anjali Sharma · Discharged</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Inter", sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1f2f;
+        }
+        .app-container {
+            max-width: 1440px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            display: flex;
+            border: 1px solid #e3eaf2;
+            min-height: 700px;
+        }
+        .sidebar {
+            width: 280px;
+            background: #f8fbfe;
+            border-right: 1px solid #dee9f2;
+            padding: 28px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-area {
+            padding: 0 16px 28px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0a3147;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-area i { color: #1f6eaf; font-size: 1.8rem; }
+        .nav-menu { flex: 1; }
+        .nav-item:not(.active):hover {
+            background: #e7f0fa;
+        }
+		
+		a {
+		   text-decoration: none;
+		   color: #2b4e6e;
+		}
+
+         .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;  
+            margin: 4px 8px;
+            border-radius: 18px;
+            color: #2b4e6e;
+            font-weight: 500;
+            transition: all 0.1s;
+            cursor: default;
+        }
+		
+		.nav-item a {
+		   padding: 14px 18px;
+		}
+        .nav-item i { width: 24px; font-size: 1.3rem; }
+        .nav-item.active { background: #d4e3ff; color: #0a3147; font-weight: 600; }
+        .sidebar-footer {
+            padding: 24px 16px 8px;
+            font-size: 0.8rem;
+            color: #5d7e99;
+            border-top: 1px solid #d4e2ee;
+            margin-top: 16px;
+        }
+        .main-content {
+            flex: 1;
+            padding: 32px 36px;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+        .patient-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .patient-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e44;
+            margin-bottom: 6px;
+        }
+        .meta-tags {
+            display: flex;
+            gap: 16px;
+            color: #3e627c;
+            font-weight: 500;
+        }
+        .discharged-badge {
+            background: #e1f5e8;
+            color: #1e6f5c;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #b0d9c0;
+        }
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1.5px solid #dbe4ec;
+            padding-bottom: 16px;
+            margin: 20px 0 28px;
+        }
+        .tab {
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 500;
+            background: #f1f6fc;
+            color: #1b4b6e;
+        }
+        .tab.active { background: #0a3147; color: white; }
+
+        /* disabled section styling */
+        .disabled-section {
+            opacity: 0.65;
+            pointer-events: none;
+            filter: grayscale(0.3);
+        }
+        .template-cards {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 24px 0 32px;
+        }
+        .template-card {
+            background: #f4f9ff;
+            border: 1px solid #d6e5f2;
+            border-radius: 24px;
+            padding: 20px 24px;
+            flex: 1 1 180px;
+            font-weight: 600;
+            color: #1f4e79;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .template-card i { font-size: 1.5rem; color: #1f6eaf; }
+        .upload-area {
+            border: 2px dashed #b8cee2;
+            border-radius: 28px;
+            padding: 28px 24px;
+            text-align: center;
+            background: #fbfeff;
+            margin: 20px 0 32px;
+        }
+        .upload-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #cbdae6;
+            border-radius: 40px;
+            padding: 12px 28px;
+            font-weight: 600;
+            color: #2d5779;
+        }
+        .btn-primary {
+            background: #0a3147;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 12px 28px;
+            font-weight: 600;
+        }
+        .table-container {
+            border-radius: 24px;
+            border: 1px solid #e6edf6;
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        th {
+            text-align: left;
+            padding: 16px 20px;
+            background: #f2f8ff;
+            color: #1e405b;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #d4e2ee;
+        }
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e9eff7;
+            color: #1f3d54;
+        }
+        .badge-completed {
+            background: #e1f5e8;
+            color: #1e6f5c;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .badge-uploaded {
+            background: #e1ecf5;
+            color: #1f6eaf;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .action-links span {
+            margin-right: 16px;
+            color: #2d5779;
+            font-weight: 500;
+        }
+        .doctor-footer {
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #d0dde9;
+            padding-top: 24px;
+        }
+        .disabled-note {
+            color: #8a9eb0;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        @media (max-width: 900px) {
+            .app-container { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #dee9f2; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <!-- SIDEBAR: Discharged Babies active -->
+    <div class="sidebar">
+        <div class="logo-area"><i class="fas fa-heartbeat"></i><span>Spandan</span></div>
+        <div class="nav-menu">
+            <div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+<div class="nav-item"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
+<div class="nav-item"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
+<div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
+<div class="nav-item"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
+<div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
+        </div>
+        <div class="sidebar-footer"><i class="far fa-clock"></i> Last sync: 2 mins ago<br><span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="patient-header">
+            <div class="patient-info">
+                <h1>B/O Anjali Sharma</h1>
+                <div class="meta-tags">
+                    <span><i class="fas fa-id-card"></i> ID: 4502</span>
+                    <span><i class="fas fa-bed"></i> Bed: 04</span>
+                    <span><i class="fas fa-venus-mars"></i> Male</span>
+                    <span><i class="fas fa-calendar-day"></i> 2 Days Old (at discharge)</span>
+                </div>
+            </div>
+            <div class="discharged-badge"><i class="fas fa-check-circle"></i> DISCHARGED · Oct 30, 2023</div>
+        </div>
+
+        <!-- Tabs: Clinical Notes active -->
+        <div class="tabs-container">
+            <a href="discharge.html" class="tab">Summary</a>
+            <a href="IMG 6 – Clinical Notes & Documents.html" class="tab active">Clinical Notes</a>
+            <a href="IMG 11 – Treatment Continuation Sheet.html" class="tab">Treatment Orders</a>
+            <a class="tab">Vitals</a>
+            <a href="IMG 10 – Investigation.html" class="tab">Investigations</a>
+            <a href="img22_doctor.html" class="tab">Video Consult History</a>
+        </div>
+
+        <!-- DIGITAL FORM TEMPLATES (disabled) -->
+        <div class="disabled-section">
+            <h3 style="font-weight: 600; margin-bottom: 12px;">Digital Form Templates</h3>
+            <p style="color: #4a6f8a; margin-bottom: 16px;">Select standardized clinical forms for immediate data entry. <span class="disabled-note"><i class="fas fa-lock"></i> Disabled for discharged patients</span></p>
+            <div class="template-cards">
+                <div class="template-card"><i class="far fa-file-alt"></i> MONITORING SHEET</div>
+                <div class="template-card"><i class="far fa-address-card"></i> DISCHARGE CARD</div>
+                <div class="template-card"><i class="fas fa-notes-medical"></i> NICU TREATMENT AND CLINICAL RECORD</div>
+            </div>
+        </div>
+
+        <!-- UPLOAD MANUAL RECORD (disabled) -->
+        <div class="disabled-section">
+            <div class="upload-area">
+                <i class="fas fa-cloud-upload-alt" style="font-size: 2.2rem; color:#1f6eaf; margin-bottom: 12px;"></i>
+                <h4>Upload Manual Record</h4>
+                <p style="margin: 12px 0;">Drag and drop physical reports, bedside notes, or scan images (PDF, JPG, PNG)</p>
+                <div class="upload-actions">
+                    <span class="btn-outline"><i class="far fa-folder-open"></i> Browse Files</span>
+                    <span class="btn-primary"><i class="fas fa-qrcode"></i> Scan</span>
+                </div>
+                <p class="disabled-note" style="margin-top: 12px;"><i class="fas fa-ban"></i> Upload disabled – patient discharged</p>
+            </div>
+        </div>
+
+        <!-- Documentation History (fully visible) -->
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <h3 style="font-weight: 600;">Documentation History</h3>
+            <span style="color: #1f6eaf; font-weight: 500;">24 Entries</span>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TYPE</th>
+                        <th>DOCUMENT NAME</th>
+                        <th>SAVED/UPLOADED</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-laptop" style="margin-right: 6px;"></i> Digital</td>
+                        <td>NBSU Discharge Summary Card</td>
+                        <td>Oct 24, 2023 14:30 PM</td>
+                        <td><span class="badge-completed">COMPLETED</span></td>
+                        <td class="action-links"><span><i class="far fa-eye"></i> View</span></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-upload" style="margin-right: 6px;"></i> Manual</td>
+                        <td>Radiology Report (Chest X-Ray)</td>
+                        <td>Oct 23, 2023 09:15 AM</td>
+                        <td><span class="badge-uploaded">UPLOADED</span></td>
+                        <td class="action-links"><span><i class="far fa-file-pdf"></i> View PDF</span></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-laptop"></i> Digital</td>
+                        <td>Feeding Tolerance Assessment</td>
+                        <td>Oct 22, 2023 22:00 PM</td>
+                        <td><span class="badge-completed">COMPLETED</span></td>
+                        <td class="action-links"><span><i class="far fa-eye"></i> View</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 16px; color: #1f6eaf; font-weight: 500;">
+            <i class="fas fa-chevron-circle-down"></i> See All 24 Documents
+        </div>
+
+        <!-- Doctor signature -->
+        <div class="doctor-footer">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-user-md" style="font-size: 2.4rem; color:#1f6eaf;"></i>
+                <div><strong>Dr. Aryan Sharma</strong><br><span style="color:#55738e;">Senior Pediatrician</span></div>
+            </div>
+            <div style="color:#5b7c95;">
+                <i class="far fa-calendar-alt"></i> Last updated: Oct 30, 2023
+            </div>
+        </div>
+        <div style="margin-top: 20px; font-size:0.8rem; color:#6a8aa3; text-align:right; border-top: 1px solid #e0eaf3; padding-top: 16px;">
+            © 2024 CareCore Hospital Information Systems. All rights reserved.
+        </div>
+    </div>
+</div>
+</body>
+</html>

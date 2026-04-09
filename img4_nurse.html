@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admitted Babies · Spandan NICU</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+		
+		a {
+		   text-decoration: none;
+		   color: #2b4e6e;
+		}
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1f2f;
+        }
+
+        .app-container {
+            max-width: 1440px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            display: flex;
+            border: 1px solid #e3eaf2;
+            min-height: 700px;
+        }
+
+        /* ---------- SIDEBAR ---------- */
+        .sidebar {
+            width: 280px;
+            background: #f8fbfe;
+            border-right: 1px solid #dee9f2;
+            padding: 28px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-area {
+            padding: 0 16px 28px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0a3147;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-area i {
+            color: #1f6eaf;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            flex: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;  
+            margin: 4px 8px;
+            border-radius: 18px;
+            color: #2b4e6e;
+            font-weight: 500;
+            transition: all 0.1s;
+            cursor: default;
+        }
+		
+		.nav-item a {
+		   padding: 14px 18px;
+		}
+
+        .nav-item i {
+            width: 24px;
+            font-size: 1.3rem;
+        }
+
+        .nav-item.active {
+            background: #d4e3ff;
+            color: #0a3147;
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            padding: 24px 16px 8px;
+            font-size: 0.8rem;
+            color: #5d7e99;
+            border-top: 1px solid #d4e2ee;
+            margin-top: 16px;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .main-content {
+            flex: 1;
+            padding: 32px 36px;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .hospital-badge {
+            background: #e3eef9;
+            color: #1f4e79;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e44;
+            margin-bottom: 4px;
+        }
+
+        .sub-header {
+            color: #4a6f8a;
+            margin-bottom: 24px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 320px;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 14px;
+            color: #7a99b3;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 18px 14px 46px;
+            border: 1.8px solid #d9e2ec;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            background: white;
+        }
+
+        /* Table */
+        .table-container {
+            border-radius: 24px;
+            border: 1px solid #e6edf6;
+            overflow-x: auto;
+            margin: 20px 0 24px;
+            background: #fafcff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+
+        th {
+            text-align: left;
+            padding: 18px 20px;
+            background: #f2f8ff;
+            color: #1e405b;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #d4e2ee;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e9eff7;
+            color: #1f3d54;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge-critical {
+            background: #ffe8e8;
+            color: #c63636;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .badge-stable {
+            background: #e1f5e8;
+            color: #1e6f5c;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+        }
+		
+		.nav-item:not(.active):hover {
+    background: #e7f0fa;
+}
+
+        .badge-observation {
+            background: #fff1d6;
+            color: #b45b0a;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-sm {
+            background: white;
+            border: 1.5px solid #cbdae6;
+            border-radius: 30px;
+            padding: 8px 14px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: #2d5779;
+            cursor: default;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-sm i {
+            font-size: 0.8rem;
+        }
+
+        .doctor-profile {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .pagination-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #55738e;
+            font-size: 0.9rem;
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            color: #5b7c95;
+            font-size: 0.85rem;
+            border-top: 1px solid #dee9f2;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 900px) {
+            .app-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #dee9f2;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-area">
+            <i class="fas fa-heartbeat"></i>
+            <span>Spandan</span>
+        </div>
+        <div class="nav-menu">
+            <div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+<div class="nav-item"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
+<div class="nav-item active"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
+<div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
+<div class="nav-item"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
+<div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
+        </div>
+        <div class="sidebar-footer">
+            <i class="far fa-clock"></i> Last sync: 2 mins ago<br>
+            <span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="top-header">
+            <span class="hospital-badge"><i class="fas fa-hospital"></i> City General Hospital - NICU Wing A</span>
+            <div class="doctor-profile">
+                <i class="fas fa-user-md" style="font-size:2rem; color:#1f6eaf;"></i>
+                <div><strong>Dr. Aryan Sharma</strong><br><span style="font-size:0.8rem;">Senior Pediatrician</span></div>
+            </div>
+        </div>
+
+        <h1 class="page-title">Admitted Babies</h1>
+        <div class="sub-header">
+            <span>Manage and monitor all currently admitted neonatal patients.</span>
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input class="search-input" type="text" placeholder="Search by Bed No, Baby ID, or Diagnosis...">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>BED NO</th>
+                        <th>BABY ID</th>
+                        <th>ADMISSION</th>
+                        <th>BIRTH WEIGHT</th>
+                        <th>DIAGNOSIS</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>B-101</strong></td>
+                        <td>BB-8921</td>
+                        <td>24 Oct 2023</td>
+                        <td>1.2 kg</td>
+                        <td>Preterm, RDS</td>
+                        <td><span class="badge-critical"><i class="fas fa-exclamation-circle"></i> Critical</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <span class="btn-sm"><a href="img5_nurse.html"><i class="far fa-user"></i> View</a></span>
+                                <span class="btn-sm"><a href="img13_nurse.html"><i class="fas fa-heartbeat"></i> Vitals</a></span>
+                                <span class="btn-sm"><a href="img15_nurse.html">Discharge</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>B-104</strong></td>
+                        <td>BB-9012</td>
+                        <td>26 Oct 2023</td>
+                        <td>2.4 kg</td>
+                        <td>Jaundice</td>
+                        <td><span class="badge-stable"><i class="fas fa-check-circle"></i> Stable</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <span class="btn-sm"><a href="img5_nurse.html"><i class="far fa-user"></i> View</a></span>
+                                <span class="btn-sm"><a href="img13_nurse.html"><i class="fas fa-heartbeat"></i> Vitals</a></span>
+                                <span class="btn-sm"><a href="img15_nurse.html">Discharge</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>B-108</strong></td>
+                        <td>BB-8845</td>
+                        <td>22 Oct 2023</td>
+                        <td>1.8 kg</td>
+                        <td>Sepsis Obs</td>
+                        <td><span class="badge-observation"><i class="fas fa-clock"></i> Observation</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <span class="btn-sm"><a href="img5_nurse.html"><i class="far fa-user"></i> View</a></span>
+                                <span class="btn-sm"><a href="img13_nurse.html"><i class="fas fa-heartbeat"></i> Vitals</a></span>
+                                <span class="btn-sm"><a href="img15_nurse.html">Discharge</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>B-112</strong></td>
+                        <td>BB-9103</td>
+                        <td>27 Oct 2023</td>
+                        <td>2.1 kg</td>
+                        <td>Post-Op Recovery</td>
+                        <td><span class="badge-stable"><i class="fas fa-check-circle"></i> Stable</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <span class="btn-sm"><a href="img5_nurse.html"><i class="far fa-user"></i> View</a></span>
+                                <span class="btn-sm"><a href="img13_nurse.html"><i class="fas fa-heartbeat"></i> Vitals</a></span>
+                                <span class="btn-sm"><a href="img15_nurse.html">Discharge</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>B-115</strong></td>
+                        <td>BB-9205</td>
+                        <td>28 Oct 2023</td>
+                        <td>2.8 kg</td>
+                        <td>Healthy Preterm</td>
+                        <td><span class="badge-stable"><i class="fas fa-check-circle"></i> Stable</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <span class="btn-sm"><a href="img5_nurse.html"><i class="far fa-user"></i> View</a></span>
+                                <span class="btn-sm"><a href="img13_nurse.html"><i class="fas fa-heartbeat"></i> Vitals</a></span>
+                                <span class="btn-sm"><a href="img15_nurse.html">Discharge</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination & summary -->
+        <div class="pagination-info">
+            <span><i class="far fa-list-alt"></i> Showing 5 of 24 active cases</span>
+            <div style="display: flex; gap: 16px;">
+                <span style="cursor:default;"><i class="fas fa-chevron-left"></i> Previous</span>
+                <span style="font-weight:600;">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span style="cursor:default;">Next <i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span><i class="far fa-copyright"></i> 2024 CareCore Hospital Information Systems. All rights reserved.</span>
+            <span><i class="fas fa-shield-alt"></i> HIPAA compliant · Data encrypted</span>
+        </div>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

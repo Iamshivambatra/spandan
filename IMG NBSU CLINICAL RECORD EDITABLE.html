@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBSU Case Sheet · Editable · B/O Anjali Sharma</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Inter", sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1f2f;
+        }
+        .app-container {
+            max-width: 1440px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            display: flex;
+            border: 1px solid #e3eaf2;
+            min-height: 700px;
+        }
+        .sidebar {
+            width: 280px;
+            background: #f8fbfe;
+            border-right: 1px solid #dee9f2;
+            padding: 28px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-area {
+            padding: 0 16px 28px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0a3147;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-area i { color: #1f6eaf; font-size: 1.8rem; }
+        .nav-menu { flex: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            margin: 4px 8px;
+            border-radius: 18px;
+            color: #2b4e6e;
+            font-weight: 500;
+            cursor: default;
+        }
+        .nav-item i { width: 24px; font-size: 1.3rem; }
+        .nav-item.active { background: #d4e3ff; color: #0a3147; font-weight: 600; }
+        .sidebar-footer {
+            padding: 24px 16px 8px;
+            font-size: 0.8rem;
+            color: #5d7e99;
+            border-top: 1px solid #d4e2ee;
+            margin-top: 16px;
+        }
+        .main-content {
+            flex: 1;
+            padding: 32px 36px;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+        .patient-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .patient-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e44;
+            margin-bottom: 6px;
+        }
+        .meta-tags {
+            display: flex;
+            gap: 16px;
+            color: #3e627c;
+            font-weight: 500;
+        }
+        .critical-badge {
+            background: #ffe8e8;
+            color: #c63636;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #f3b8b8;
+        }
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1.5px solid #dbe4ec;
+            padding-bottom: 16px;
+            margin: 20px 0 28px;
+        }
+        .tab {
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 500;
+            background: #f1f6fc;
+            color: #1b4b6e;
+            cursor: default;
+        }
+        .tab.active { background: #0a3147; color: white; }
+        .section-card {
+            background: #fafcff;
+            border-radius: 24px;
+            padding: 24px 28px;
+            border: 1px solid #e6edf6;
+            margin-bottom: 28px;
+        }
+        .section-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: #1a3d57;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px dashed #c0d4e5;
+            padding-bottom: 10px;
+        }
+        .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; }
+        .grid-3col { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px 20px; }
+        .grid-4col { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px 20px; }
+        .indication-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px 16px;
+            margin-bottom: 16px;
+        }
+        .indication-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .diagnosis-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+        .field-group { display: flex; flex-direction: column; }
+        .field-label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #2c5779;
+            margin-bottom: 4px;
+        }
+        .field-value, .editable-input, .editable-select {
+            background: white;
+            padding: 10px 14px;
+            border-radius: 16px;
+            border: 1.5px solid #d9e2ec;
+            font-size: 0.9rem;
+            color: #1f3d54;
+            width: 100%;
+            font-family: inherit;
+        }
+        .editable-input:focus, .editable-select:focus {
+            border-color: #1f6eaf;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(31,110,175,0.1);
+        }
+        .inline-options {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .footprint-placeholder {
+            background: #e9f0f7;
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+            color: #2c5779;
+            font-weight: 500;
+            border: 1px dashed #b8cee2;
+        }
+        .doctor-footer {
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #d0dde9;
+            padding-top: 24px;
+        }
+        .badge-outcome {
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: #e1ecf5;
+            font-weight: 600;
+        }
+        .btn-save {
+            background: #1e9c50;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 12px 28px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-left: 16px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-save:hover { background: #178a44; }
+        @media (max-width: 900px) {
+            .app-container { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #dee9f2; }
+            .grid-2col, .grid-3col, .grid-4col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-area"><i class="fas fa-heartbeat"></i><span>Spandan</span></div>
+        <div class="nav-menu">
+            <div class="nav-item"><i class="fas fa-th-large"></i> Dashboard</div>
+            <div class="nav-item"><i class="fas fa-baby"></i> Register New baby</div>
+            <div class="nav-item active"><i class="fas fa-procedures"></i> Admitted Babies</div>
+            <div class="nav-item"><i class="fas fa-check-circle"></i> Discharged Babies</div>
+            <div class="nav-item"><i class="fas fa-chart-pie"></i> Analytics</div>
+            <div class="nav-item"><i class="fas fa-cog"></i> Settings</div>
+        </div>
+        <div class="sidebar-footer"><i class="far fa-clock"></i> Last sync: 2 mins ago<br><span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span></div>
+    </div>
+
+    <!-- MAIN CONTENT (EDITABLE) -->
+    <div class="main-content">
+        <div class="patient-header">
+            <div class="patient-info">
+                <h1>B/O Anjali Sharma</h1>
+                <div class="meta-tags">
+                    <span><i class="fas fa-id-card"></i> ID: 4502</span>
+                    <span><i class="fas fa-bed"></i> Bed: 04</span>
+                    <span><i class="fas fa-venus-mars"></i> Male</span>
+                    <span><i class="fas fa-calendar-day"></i> 2 Days Old</span>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <div class="critical-badge"><i class="fas fa-exclamation-triangle"></i> CRITICAL</div>
+                <a href="img6_nurse.html"><button class="btn-save" id="saveButton"><i class="fas fa-save"></i> Save Changes</button></a>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <span class="tab">Summary</span>
+            <span class="tab active">Clinical Notes</span>
+            <span class="tab">Treatment Orders</span>
+            <span class="tab">Vital Signs</span>
+            <span class="tab">Investigations</span>
+            <span class="tab">Video Consult History</span>
+        </div>
+
+        <!-- NBSU CASE SHEET (editable) -->
+        <div style="margin-bottom: 16px;">
+            <span style="background: #0a3147; color:white; padding:6px 20px; border-radius: 40px; font-weight:600; font-size:0.9rem;"><i class="far fa-file-alt"></i> NEONATAL CASE RECORD SHEET · NHM</span>
+        </div>
+        <h2 style="font-size:1.7rem; font-weight:700; color:#0a2e44; margin-bottom:4px;">NEWBORN STABILIZATION UNIT (NBSU)</h2>
+        <div style="color: #4a6f8a; margin-bottom: 24px;">Community Health Center / Civil Hospital · District · <strong>NEONATAL CASE RECORD SHEET</strong> (Developed by National Health Mission)</div>
+
+        <!-- CLINICAL INDICATIONS (editable) -->
+        <div class="section-card">
+            <div class="section-title"><i class="fas fa-list-check"></i> CLINICAL INDICATIONS</div>
+            <div class="indication-list">
+                <div class="indication-item"><input type="checkbox" checked> 1. Prematurity <34 wks (28+4)</div>
+                <div class="indication-item"><input type="checkbox" checked> 2. Low Birth Weight <1800 gm (1120g)</div>
+                <div class="indication-item"><input type="checkbox"> 3. Perinatal Asphyxia</div>
+                <div class="indication-item"><input type="checkbox"> 4. Neonatal Jaundice</div>
+                <div class="indication-item"><input type="checkbox" checked> 5. Grunting/Retractions</div>
+                <div class="indication-item"><input type="checkbox"> 6. Large Baby (>4 kg)</div>
+                <div class="indication-item"><input type="checkbox"> 7. Retinal Vein Fistula</div>
+                <div class="indication-item"><input type="checkbox"> 8. Cerebral Palsy</div>
+                <div class="indication-item"><input type="checkbox"> 9. Apnea / Croup</div>
+                <div class="indication-item"><input type="checkbox"> 10. Newborn Convulsions</div>
+                <div class="indication-item"><input type="checkbox"> 11. IDM (Infant of Diabetic Mother)</div>
+                <div class="indication-item"><input type="checkbox"> 12. Oligohydramnios</div>
+                <div class="indication-item"><input type="checkbox"> 13. Abdominal Distension</div>
+                <div class="indication-item"><input type="checkbox"> 14. Hypothermia</div>
+                <div class="indication-item"><input type="checkbox" checked> 15. Poor perfusion (CRT>3s)</div>
+                <div class="indication-item"><input type="checkbox"> 16. Meconium Aspiration</div>
+                <div class="indication-item"><input type="checkbox"> 17. Bleeding</div>
+                <div class="indication-item"><input type="checkbox"> 18. Diarrhoea</div>
+                <div class="indication-item"><input type="checkbox"> 19. Any Other</div>
+            </div>
+        </div>
+
+        <!-- PRESUMPTIVE DIAGNOSIS -->
+        <div class="section-card">
+            <div class="section-title"><i class="fas fa-stethoscope"></i> PRESUMPTIVE DIAGNOSIS</div>
+            <div class="diagnosis-options">
+                <span><input type="radio" name="diag"> LBW (P07.1)</span>
+                <span><input type="radio" name="diag" checked> Prematurity (P07.3)</span>
+                <span><input type="radio" name="diag"> SGA/IUGR (P05.1)</span>
+                <span><input type="radio" name="diag" checked> RDS/HMD (P22.0)</span>
+                <span><input type="radio" name="diag"> TTN (P22.1)</span>
+                <span><input type="radio" name="diag"> Pneumonia (P23)</span>
+                <span><input type="radio" name="diag"> Asphyxia (P21.0)</span>
+                <span><input type="radio" name="diag" checked> Neonatal Sepsis (P36)</span>
+                <span><input type="radio" name="diag"> Haemorrhage (P50-P52)</span>
+                <span><input type="radio" name="diag"> Congenital Malformation</span>
+            </div>
+        </div>
+
+        <!-- BABY'S INFORMATION – AT BIRTH -->
+        <div class="section-card">
+            <div class="section-title"><i class="fas fa-baby"></i> BABY'S INFORMATION – AT BIRTH</div>
+            <div class="grid-2col">
+                <div class="field-group"><span class="field-label">Birth Weight (kg)</span><input class="editable-input" type="text" value="1.12 kg"></div>
+                <div class="field-group"><span class="field-label">Gestational age (completed weeks)</span><input class="editable-input" type="text" value="28 weeks + 4 days"></div>
+            </div>
+        </div>
+
+        <!-- GENERAL EXAMINATION (editable) -->
+        <div class="section-card">
+            <div class="section-title"><i class="fas fa-notes-medical"></i> GENERAL EXAMINATION</div>
+            <div class="grid-4col">
+                <div class="field-group"><span class="field-label">General Condition</span><input class="editable-input" value="Lethargic"></div>
+                <div class="field-group"><span class="field-label">Apnea</span><input class="editable-input" value="Yes (mild)"></div>
+                <div class="field-group"><span class="field-label">Breast fed within 1h?</span><input class="editable-input" value="No"></div>
+                <div class="field-group"><span class="field-label">CRT >3 secs</span><input class="editable-input" value="Yes"></div>
+                <div class="field-group"><span class="field-label">Tone</span><input class="editable-input" value="Hypotonic"></div>
+                <div class="field-group"><span class="field-label">Temperature (°C)</span><input class="editable-input" value="36.2"></div>
+                <div class="field-group"><span class="field-label">Heart Rate (bpm)</span><input class="editable-input" value="148"></div>
+                <div class="field-group"><span class="field-label">Respiratory Rate (/min)</span><input class="editable-input" value="68"></div>
+                <div class="field-group"><span class="field-label">Color</span><input class="editable-input" value="Pale/cyanosed"></div>
+                <div class="field-group"><span class="field-label">Skin pinch >2 secs</span><input class="editable-input" value="Yes"></div>
+                <div class="field-group"><span class="field-label">Convulsions</span><input class="editable-input" value="None"></div>
+                <div class="field-group"><span class="field-label">Jaundice</span><input class="editable-input" value="No"></div>
+                <div class="field-group"><span class="field-label">Lung Auscultation</span><input class="editable-input" value="Decreased air entry"></div>
+                <div class="field-group"><span class="field-label">Blood Sugar (mg/dL)</span><input class="editable-input" value="42"></div>
+                <div class="field-group"><span class="field-label">Oxygen Saturation (%)</span><input class="editable-input" value="88%"></div>
+            </div>
+        </div>
+
+        <!-- SYSTEMIC EXAMINATION -->
+        <div class="section-card">
+            <div class="section-title"><i class="fas fa-lungs"></i> SYSTEMIC EXAMINATION</div>
+            <div class="grid-2col">
+                <div class="field-group"><span class="field-label">CVS</span><input class="editable-input" value="Tachycardia, no murmur, weak pulses"></div>
+                <div class="field-group"><span class="field-label">Respiratory</span><input class="editable-input" value="Grunting, nasal flaring, retractions"></div>
+                <div class="field-group"><span class="field-label">Neurological</span><input class="editable-input" value="Hypotonia, weak suck"></div>
+                <div class="field-group"><span class="field-label">Abdomen</span><input class="editable-input" value="Soft, mild distension"></div>
+            </div>
+        </div>
+
+        <!-- TREATMENT & INVESTIGATIONS (editable textareas) -->
+        <div class="grid-2col" style="margin-bottom:24px;">
+            <div class="section-card" style="margin-bottom:0;">
+                <div class="section-title"><i class="fas fa-syringe"></i> TREATMENT ADVISED</div>
+                <textarea class="editable-input" rows="5" style="resize:vertical;">• IV fluids (10% Dextrose) 
+• Inj. Ampicillin + Gentamicin 
+• CPAP (PEEP 5, FiO₂ 35%) 
+• Caffeine citrate loading 
+• Phototherapy (if bili rises) 
+• Minimal handling, thermal care</textarea>
+            </div>
+            <div class="section-card" style="margin-bottom:0;">
+                <div class="section-title"><i class="fas fa-flask"></i> INVESTIGATIONS ADVISED</div>
+                <textarea class="editable-input" rows="5" style="resize:vertical;">• CBC, CRP, Blood culture 
+• Blood gas, Serum electrolytes 
+• Chest X-ray 
+• Cranial ultrasound 
+• RBS monitoring q6h</textarea>
+            </div>
+        </div>
+
+        <!-- FOOT PRINT & OUTCOME -->
+        <div class="grid-2col" style="gap:24px;">
+            <div class="section-card">
+                <div class="section-title"><i class="fas fa-shoe-prints"></i> FOOT PRINT (LEFT FOOT)</div>
+                <div class="footprint-placeholder">
+                    <i class="fas fa-baby" style="font-size: 3rem; opacity: 0.6;"></i>
+                    <p>👣 Footprint recorded (ink) · ID verified</p>
+                    <p style="margin-top:12px;"><input type="file" accept="image/*" style="font-size:0.9rem;"></p>
+                </div>
+            </div>
+            <div class="section-card">
+                <div class="section-title"><i class="fas fa-flag-checkered"></i> FINAL OUTCOME</div>
+                <div class="inline-options" style="margin-bottom:20px;">
+                    <label><input type="radio" name="outcome"> Successfully Discharged</label>
+                    <label><input type="radio" name="outcome"> LAMA</label>
+                    <label><input type="radio" name="outcome"> Referred</label>
+                    <label><input type="radio" name="outcome" checked> Ongoing care (still admitted)</label>
+                </div>
+                <div class="field-label">IN CASE OF DEATH: Most Relevant Cause</div>
+                <select class="editable-select">
+                    <option>-- Not applicable --</option>
+                    <option>RDS</option><option>Sepsis</option><option>Asphyxia</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Signature -->
+        <div class="doctor-footer">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-user-md" style="font-size:2.4rem; color:#1f6eaf;"></i>
+                <div><strong>Dr. Aryan Sharma</strong><br><span style="color:#55738e;">Senior Pediatrician</span></div>
+            </div>
+            <div class="badge-outcome"><i class="far fa-calendar-alt"></i> Record date: 2026-04-09 · 10:30 AM</div>
+        </div>
+        <div style="margin-top:20px; font-size:0.8rem; color:#6a8aa3; text-align:right;">© 2024 CareCore Hospital Information Systems. All rights reserved.</div>
+    </div>
+</div>
+<script>
+    document.getElementById('saveButton').addEventListener('click', function() {
+        alert('Case sheet changes saved (demo).');
+    });
+</script>
+</body>
+</html>

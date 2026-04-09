@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+<title>CareCore · Empowered Healthcare</title>
+<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap%22 rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: "Inter", sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1f2f;
+        }
+ 
+        .login-container {
+            max-width: 1280px;
+            width: 100%;
+            background: white;
+            border-radius: 36px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.25);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            border: 1px solid #e3eaf2;
+        }
+ 
+        /* LEFT BRAND PANEL */
+        .brand-panel {
+            background: linear-gradient(145deg, #0a2e44 0%, #123f59 100%);
+            padding: 48px 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+ 
+        .brand-panel h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+ 
+        .brand-highlight {
+            color: #a3d0f0;
+            display: block;
+            margin-top: 6px;
+        }
+ 
+        .brand-desc {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 48px;
+            max-width: 90%;
+        }
+ 
+        .secure-badge {
+            margin-top: auto;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 20px 24px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+ 
+        .secure-badge i {
+            font-size: 1.6rem;
+            margin-right: 12px;
+            color: #9fcff0;
+        }
+ 
+        .secure-text {
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+ 
+        .secure-sub {
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+ 
+        .version-info {
+            margin-top: 32px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+ 
+        /* RIGHT LOGIN PANEL */
+        .login-panel {
+            padding: 48px 44px;
+            background: #ffffff;
+        }
+ 
+        .welcome-header {
+            margin-bottom: 32px;
+        }
+ 
+        .welcome-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f3147;
+            margin-bottom: 8px;
+        }
+ 
+        .welcome-sub {
+            color: #4e6f89;
+            font-weight: 400;
+        }
+ 
+        /* role toggle */
+        .role-toggle {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            background: #f2f6fc;
+            padding: 6px;
+            border-radius: 60px;
+            width: fit-content;
+        }
+ 
+        .role-option {
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: default;
+            color: #3b5f7a;
+            transition: all 0.1s;
+        }
+ 
+        .role-option.active {
+            background: white;
+            color: #0a2e44;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+        }
+ 
+        .input-group {
+            margin-bottom: 24px;
+        }
+ 
+        .input-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: #1e405b;
+            display: block;
+        }
+ 
+        .input-field {
+            width: 100%;
+            padding: 16px 18px;
+            border: 1.8px solid #d9e2ec;
+            border-radius: 20px;
+            font-size: 1rem;
+            background: #fbfdff;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+ 
+        .input-field:focus {
+            border-color: #1f6eaf;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(31, 110, 175, 0.08);
+        }
+ 
+        select.input-field {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232b4e6e" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 16px;
+        }
+ 
+        .password-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+ 
+        .otp-btn {
+            background: #eaf1f9;
+            border: 1.8px solid #d0dce8;
+            border-radius: 20px;
+            padding: 0 22px;
+            height: 58px;
+            font-weight: 600;
+            color: #1f4e79;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: default;
+        }
+ 
+        .flex-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 24px 0 32px;
+        }
+ 
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            color: #2f5470;
+        }
+ 
+        .forgot-link {
+            color: #1f6eaf;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+ 
+        .login-btn {
+            width: 100%;
+            background: #0a3147;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 18px 24px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: default;
+            border: 1px solid #255e83;
+            transition: background 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+			cursor: pointer;
+			text-decoration: none;
+        }
+ 
+        .login-btn i {
+            font-size: 1.1rem;
+        }
+ 
+        .footer-links {
+            margin-top: 32px;
+            display: flex;
+            gap: 32px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #5b7c95;
+            justify-content: flex-end;
+        }
+ 
+        .footer-links span {
+            cursor: default;
+        }
+ 
+        .mobile-sync {
+            display: none;
+        }
+ 
+        /* responsive */
+        @media (max-width: 800px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                border-radius: 32px;
+            }
+            .brand-panel {
+                padding: 36px 28px;
+            }
+            .login-panel {
+                padding: 36px 28px;
+            }
+            .brand-panel h1 {
+                font-size: 2.2rem;
+            }
+        }
+ 
+        .version-footer {
+            margin-top: 16px;
+            color: #66829b;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+</style>
+</head>
+<body>
+<div class="login-container">
+<!-- LEFT: Empowered Healthcare -->
+<div class="brand-panel">
+<div>
+<h1>Empowered <br>Healthcare <span class="brand-highlight">Every Pulse Matters.</span></h1>
+<div class="brand-desc">Access patient records, manage facility logistics, and coordinate care through our unified digital platform.</div>
+</div>
+<div class="secure-badge">
+<div style="display: flex; align-items: center;">
+<i class="fas fa-shield-hal"></i>
+<div>
+<div class="secure-text">Enterprise-grade security</div>
+<div class="secure-sub">HIPAA compliant · TLS 1.3 encrypted</div>
+</div>
+</div>
+</div>
+<div class="version-info">
+<i class="far fa-clock"></i> Version 4.2.0 · Last Sync: 2 mins ago
+</div>
+</div>
+ 
+    <!-- RIGHT: Login form -->
+<div class="login-panel">
+<div class="welcome-header">
+<h2>Welcome back</h2>
+<div class="welcome-sub">Enter your credentials to manage your facility.</div>
+</div>
+ 
+        <!-- Role selector: Doctor / Nurse -->
+<div class="role-toggle">
+<span class="role-option"><i class="fas fa-user-md" style="margin-right: 8px;"></i>Doctor</span>
+<span class="role-option active"><i class="fas fa-user-nurse"></i> Nurse</span>
+</div>
+ 
+        <!-- Select Healthcare Facility -->
+<div class="input-group">
+<label class="input-label">Select Healthcare Facility</label>
+<select class="input-field">
+<option>Choose center...</option>
+<option>NICU West Wing</option>
+<option>Pediatric Intensive Care</option>
+<option>Neonatal High Dependency</option>
+</select>
+</div>
+ 
+        <!-- Username or Mobile Number -->
+<div class="input-group">
+<label class="input-label">Username or Mobile Number</label>
+<input class="input-field" type="text" placeholder="e.g. nurse_742 or 98XXXXXXXXX" value="nurse_spandan">
+</div>
+ 
+        <!-- Password or OTP -->
+<div class="input-group">
+<label class="input-label">Password or OTP</label>
+<div class="password-row">
+<input class="input-field" type="password" placeholder="••••••••" value="dummypass" style="flex:1;">
+<span class="otp-btn"><i class="far fa-paper-plane"></i> Request OTP</span>
+</div>
+</div>
+ 
+        <!-- Remember & Forgot -->
+<div class="flex-options">
+<label class="remember">
+<input type="checkbox" checked style="accent-color:#0a3147; width:18px; height:18px;"> Remember session
+</label>
+<a href="#" class="forgot-link">Forgot Password?</a>
+</div>
+ 
+        <!-- Login button -->
+<a href="img2_nurse.html" class="login-btn"><i class="fas fa-arrow-right-to-bracket"></i> Login to Portal</a>
+ 
+        <!-- Footer links -->
+<div class="footer-links">
+<span>PRIVACY POLICY</span>
+<span>TERMS OF SERVICE</span>
+</div>
+<div class="version-footer">
+<span><i class="far fa-check-circle" style="color: #1e7e5e;"></i> Secure session</span>
+<span>v4.2.0 · sync 2m ago</span>
+</div>
+</div>
+</div>
+ 
+<script src="index.js"></script>
+</body>
+</html>

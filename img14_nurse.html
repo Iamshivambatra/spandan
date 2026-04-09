@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigations · B/O Anjali Sharma · Spandan</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Inter", sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1f2f;
+        }
+        .app-container {
+            max-width: 1440px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            display: flex;
+            border: 1px solid #e3eaf2;
+            min-height: 700px;
+        }
+        .sidebar {
+            width: 280px;
+            background: #f8fbfe;
+            border-right: 1px solid #dee9f2;
+            padding: 28px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-area {
+            padding: 0 16px 28px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0a3147;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-area i { color: #1f6eaf; font-size: 1.8rem; }
+        .nav-menu { flex: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            margin: 4px 8px;
+            border-radius: 18px;
+            color: #2b4e6e;
+            font-weight: 500;
+            cursor: default;
+        }
+        .nav-item i { width: 24px; font-size: 1.3rem; }
+        .nav-item.active { background: #d4e3ff; color: #0a3147; font-weight: 600; }
+        .sidebar-footer {
+            padding: 24px 16px 8px;
+            font-size: 0.8rem;
+            color: #5d7e99;
+            border-top: 1px solid #d4e2ee;
+            margin-top: 16px;
+        }
+        .main-content {
+            flex: 1;
+            padding: 32px 36px;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+        .patient-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .patient-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e44;
+            margin-bottom: 6px;
+        }
+        .meta-tags {
+            display: flex;
+            gap: 16px;
+            color: #3e627c;
+            font-weight: 500;
+        }
+        .critical-badge {
+            background: #ffe8e8;
+            color: #c63636;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #f3b8b8;
+        }
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1.5px solid #dbe4ec;
+            padding-bottom: 16px;
+            margin: 20px 0 28px;
+        }
+        .tab {
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 500;
+            background: #f1f6fc;
+            color: #1b4b6e;
+            cursor: default;
+        }
+        .tab.active { background: #0a3147; color: white; }
+        .upload-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .upload-card {
+            background: #fafcff;
+            border-radius: 28px;
+            padding: 24px 28px;
+            border: 1.5px dashed #b8cee2;
+            text-align: center;
+        }
+        .upload-card h4 {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .upload-card p {
+            color: #55738e;
+            margin-bottom: 20px;
+        }
+        .btn-upload {
+            background: #e7f0fa;
+            border: none;
+            border-radius: 40px;
+            padding: 12px 28px;
+            font-weight: 600;
+            color: #1f4e79;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: default;
+        }
+        .section-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 24px 0 16px;
+            color: #1a3d57;
+        }
+        .table-container {
+            border-radius: 24px;
+            border: 1px solid #e6edf6;
+            overflow-x: auto;
+            margin-bottom: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+        th {
+            text-align: left;
+            padding: 16px 16px;
+            background: #f2f8ff;
+            color: #1e405b;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #d4e2ee;
+        }
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #e9eff7;
+            color: #1f3d54;
+        }
+        .action-icon {
+            color: #1f6eaf;
+            font-size: 1.2rem;
+            cursor: default;
+        }
+        .result-count {
+            color: #55738e;
+            margin: 8px 0 24px;
+        }
+        .preview-section {
+            background: #f6faff;
+            border-radius: 28px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .preview-thumbs {
+            display: flex;
+            gap: 16px;
+        }
+        .thumb {
+            width: 70px;
+            height: 70px;
+            background: #e1ecf5;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1f6eaf;
+        }
+        .btn-add-scan {
+            background: #0a3147;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 12px 24px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: default;
+        }
+        .doctor-footer {
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #d0dde9;
+            padding-top: 24px;
+        }
+        @media (max-width: 900px) {
+            .app-container { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #dee9f2; }
+            .upload-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-area"><i class="fas fa-heartbeat"></i><span>Spandan</span></div>
+        <div class="nav-menu">
+            <div class="nav-item"><i class="fas fa-th-large"></i> Dashboard</div>
+            <div class="nav-item"><i class="fas fa-baby"></i> Register New baby</div>
+            <div class="nav-item active"><i class="fas fa-procedures"></i> Admitted Babies</div>
+            <div class="nav-item"><i class="fas fa-check-circle"></i> Discharged Babies</div>
+            <div class="nav-item"><i class="fas fa-chart-pie"></i> Analytics</div>
+            <div class="nav-item"><i class="fas fa-cog"></i> Settings</div>
+        </div>
+        <div class="sidebar-footer"><i class="far fa-clock"></i> Last sync: 2 mins ago<br><span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="patient-header">
+            <div class="patient-info">
+                <h1>B/O Anjali Sharma</h1>
+                <div class="meta-tags">
+                    <span><i class="fas fa-id-card"></i> ID: 4502</span>
+                    <span><i class="fas fa-bed"></i> Bed: 04</span>
+                    <span><i class="fas fa-venus-mars"></i> Male</span>
+                    <span><i class="fas fa-calendar-day"></i> 2 Days Old</span>
+                </div>
+            </div>
+            <div class="critical-badge"><i class="fas fa-exclamation-triangle"></i> CRITICAL</div>
+        </div>
+
+        <!-- TABS: Investigations active -->
+        <div class="tabs-container">
+            <span class="tab">Summary</span>
+            <span class="tab">Clinical Notes</span>
+            <span class="tab">Treatment Orders</span>
+            <span class="tab">Vitals</span>
+            <span class="tab active">Investigations</span>
+            <span class="tab">Video Consult History</span>
+        </div>
+
+        <!-- Upload cards -->
+        <div class="upload-row">
+            <div class="upload-card">
+                <i class="fas fa-camera" style="font-size: 2rem; color:#1f6eaf; margin-bottom: 12px;"></i>
+                <h4>Upload Photo</h4>
+                <p>Scan or snap test results (JPG, PNG)</p>
+                <span class="btn-upload"><i class="fas fa-image"></i> Select Images</span>
+            </div>
+            <div class="upload-card">
+                <i class="fas fa-file-pdf" style="font-size: 2rem; color:#c63636; margin-bottom: 12px;"></i>
+                <h4>Upload PDF</h4>
+                <p>Direct lab reports or scanned docs</p>
+                <span class="btn-upload"><i class="fas fa-folder-open"></i> Select Documents</span>
+            </div>
+        </div>
+
+        <!-- Recent Test Results -->
+        <div class="section-title"><i class="fas fa-flask"></i> Recent Test Results</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>DATE & TIME</th>
+                        <th>TEST NAME</th>
+                        <th>VALUE</th>
+                        <th>REFERENCE RANGE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>24 Oct, 2023 08:15 AM</td>
+                        <td>Serum Bilirubin (Total) Phototherapy Monitoring</td>
+                        <td>12.4 mg/dL</td>
+                        <td>5.0 - 15.0 mg/dL</td>
+                        <td class="action-icon"><span><i class="far fa-file-pdf"></i> View PDF</span> <span><i class="fas fa-sync-alt"></i> Replace</span></td>
+                    </tr>
+                    <tr>
+                        <td>23 Oct, 2023 02:30 PM</td>
+                        <td>CRP (C-Reactive Protein) Infection Screening</td>
+                        <td>18.2 mg/L</td>
+                        <td>0.0 - 6.0 mg/L</td>
+                        <td class="action-icon"><span><i class="far fa-file-pdf"></i> View PDF</span> <span><i class="fas fa-sync-alt"></i> Replace</span></td>
+                    </tr>
+                    <tr>
+                        <td>22 Oct, 2023 11:00 AM</td>
+                        <td>Blood Glucose (RBS) Routine Check</td>
+                        <td>65 mg/dL</td>
+                        <td>45 - 120 mg/dL</td>
+                        <td class="action-icon"><span><i class="far fa-file-pdf"></i> View PDF</span> <span><i class="fas fa-sync-alt"></i> Replace</span></td>
+                    </tr>
+                    <tr>
+                        <td>22 Oct, 2023 11:00 AM</td>
+                        <td>Hemoglobin (Hb) CBC Complete Blood Count</td>
+                        <td>9.4 g/dL</td>
+                        <td>14.0 - 20.0 g/dL</td>
+                        <td class="action-icon"><span><i class="far fa-file-pdf"></i> View PDF</span> <span><i class="fas fa-sync-alt"></i> Replace</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="result-count"><i class="far fa-list-alt"></i> Showing 4 of 24 results</div>
+
+        <!-- Report Previews -->
+        <div class="preview-section">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <i class="fas fa-file-alt" style="font-size: 1.6rem; color:#1f6eaf;"></i>
+                <h4 style="font-weight: 700;">Report Previews</h4>
+            </div>
+            <div class="preview-thumbs">
+                <div class="thumb"><i class="fas fa-file-image fa-2x"></i></div>
+                <div class="thumb"><i class="fas fa-file-pdf fa-2x"></i></div>
+            </div>
+            <span class="btn-add-scan"><i class="fas fa-plus-circle"></i> Add new scan</span>
+        </div>
+
+        <!-- Doctor signature -->
+        <div class="doctor-footer">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-user-md" style="font-size:2.4rem; color:#1f6eaf;"></i>
+                <div><strong>Dr. Aryan Sharma</strong><br><span style="color:#55738e;">Senior Pediatrician</span></div>
+            </div>
+            <div style="color:#5b7c95;"><i class="far fa-calendar-alt"></i> Last updated: today</div>
+        </div>
+        <div style="margin-top:20px; font-size:0.8rem; color:#6a8aa3; text-align:right;">© 2024 CareCore Hospital Information Systems. All rights reserved.</div>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

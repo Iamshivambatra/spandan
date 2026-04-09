@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B/O Anjali Sharma · Spandan NICU</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1f2f;
+        }
+
+        .app-container {
+            max-width: 1440px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            display: flex;
+            border: 1px solid #e3eaf2;
+            min-height: 700px;
+        }
+
+        /* ---------- SIDEBAR ---------- */
+        .sidebar {
+            width: 280px;
+            background: #f8fbfe;
+            border-right: 1px solid #dee9f2;
+            padding: 28px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-area {
+            padding: 0 16px 28px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0a3147;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-area i {
+            color: #1f6eaf;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            flex: 1;
+        }
+		
+		.nav-item:not(.active):hover {
+            background: #e7f0fa;
+        }
+		
+		a {
+		   text-decoration: none;
+		   color: #2b4e6e;
+		}
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;  
+            margin: 4px 8px;
+            border-radius: 18px;
+            color: #2b4e6e;
+            font-weight: 500;
+            transition: all 0.1s;
+            cursor: default;
+        }
+		
+		.nav-item a {
+		   padding: 14px 18px;
+		}
+
+        .nav-item i {
+            width: 24px;
+            font-size: 1.3rem;
+        }
+
+        .nav-item.active {
+            background: #d4e3ff;
+            color: #0a3147;
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            padding: 24px 16px 8px;
+            font-size: 0.8rem;
+            color: #5d7e99;
+            border-top: 1px solid #d4e2ee;
+            margin-top: 16px;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .main-content {
+            flex: 1;
+            padding: 32px 36px;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+
+        /* Patient header */
+        .patient-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .patient-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e44;
+            margin-bottom: 6px;
+        }
+
+        .meta-tags {
+            display: flex;
+            gap: 16px;
+            color: #3e627c;
+            font-weight: 500;
+        }
+
+        .critical-badge {
+            background: #ffe8e8;
+            color: #c63636;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #f3b8b8;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1.5px solid #dbe4ec;
+            padding-bottom: 16px;
+            margin: 20px 0 28px;
+        }
+
+        .tab {
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 500;
+            background: #f1f6fc;
+            color: #1b4b6e;
+        }
+
+        .tab.active {
+            background: #0a3147;
+            color: white;
+        }
+
+        /* Detail grid */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 28px;
+        }
+
+        .info-card {
+            background: #fafcff;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid #e6edf6;
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            color: #1a3d57;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .birth-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+        }
+
+        .data-label {
+            color: #55738e;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .data-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .diagnosis-list {
+            list-style: none;
+        }
+
+        .diagnosis-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #d0dde9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vent-params {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 28px;
+            margin-top: 12px;
+        }
+
+        .status-note {
+            background: #fff9eb;
+            padding: 18px;
+            border-radius: 18px;
+            border-left: 6px solid #d9781a;
+            margin: 18px 0;
+        }
+
+        .activity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .activity-tag {
+            background: #e7f0fa;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #1f4e79;
+        }
+
+        .vitals-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            background: #eef3fa;
+            border-radius: 24px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .vital-item {
+            text-align: center;
+        }
+
+        .vital-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0a2e44;
+        }
+
+        .doctor-footer {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #d0dde9;
+            padding-top: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .app-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #dee9f2;
+            }
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <!-- SIDEBAR (unchanged) -->
+    <div class="sidebar">
+        <div class="logo-area">
+            <i class="fas fa-heartbeat"></i>
+            <span>Spandan</span>
+        </div>
+        <div class="nav-menu">
+<div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+<div class="nav-item"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
+<div class="nav-item"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
+<div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
+<div class="nav-item"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
+<div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
+        </div>
+        <div class="sidebar-footer">
+            <i class="far fa-clock"></i> Last sync: 2 mins ago<br>
+            <span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT : corrected tab active = "Summary" -->
+    <div class="main-content">
+        <div class="patient-header">
+            <div class="patient-info">
+                <h1>B/O Anjali Sharma</h1>
+                <div class="meta-tags">
+                    <span><i class="fas fa-id-card"></i> ID: 4502</span>
+                    <span><i class="fas fa-bed"></i> Bed: 04</span>
+                    <span><i class="fas fa-venus-mars"></i> Male</span>
+                    <span><i class="fas fa-calendar-day"></i> 2 Days Old</span>
+                </div>
+            </div>
+            <div class="critical-badge">
+                <i class="fas fa-exclamation-triangle"></i> CRITICAL
+            </div>
+        </div>
+
+        <!-- Tabs: now Summary is active -->
+        <div class="tabs-container">
+            <span class="tab active">Summary</span>
+            <a href="img6_nurse.html" class="tab">Clinical Notes</a>
+            <a href="img12_nurse.html" class="tab">Treatment Orders</a>
+            <a href="img13_nurse.html" class="tab">Vitals</a>
+            <a href="img14_nurse.html" class="tab">Investigations</a>
+            <a href="img22_doctor.html" class="tab">Video Consult History</a>
+            <a href="img15_nurse.html" class="tab">Discharge</a>
+        </div>
+
+        <!-- Two column layout (all summary content) -->
+        <div class="detail-grid">
+            <!-- left column -->
+            <div>
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-baby"></i> Birth Details</div>
+                    <div class="birth-row">
+                        <div>
+                            <div class="data-label">Gestation</div>
+                            <div class="data-value">28 Weeks + 4 Days</div>
+                        </div>
+                        <div>
+                            <div class="data-label">Birth Weight</div>
+                            <div class="data-value">1,120 g</div>
+                        </div>
+                        <div>
+                            <div class="data-label">Delivery Mode</div>
+                            <div class="data-value">Emergency C-Section</div>
+                        </div>
+                        <div>
+                            <div class="data-label">APGAR SCORE</div>
+                            <div class="data-value">6/1, 8/5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-notes-medical"></i> Diagnosis</div>
+                    <ul class="diagnosis-list">
+                        <li><i class="fas fa-circle" style="font-size: 0.5rem; color:#c63636;"></i> Extreme Preterm</li>
+                        <li><i class="fas fa-circle" style="font-size: 0.5rem; color:#c63636;"></i> Respiratory Distress Syndrome</li>
+                        <li><i class="fas fa-circle" style="font-size: 0.5rem; color:#c63636;"></i> Early Onset Sepsis</li>
+                        <li><i class="fas fa-circle" style="font-size: 0.5rem; color:#c63636;"></i> Very Low Birth Weight (VLBW)</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-wind"></i> Ventilation & Oxygen Support</div>
+                    <div class="vent-params">
+                        <div><span class="data-label">MODE</span> <span class="data-value">CPAP</span></div>
+                        <div><span class="data-label">FiO₂</span> <span class="data-value">35%</span></div>
+                        <div><span class="data-label">PEEP</span> <span class="data-value">5 cmH₂O</span></div>
+                        <div><span class="data-label">FLOW</span> <span class="data-value">6 L/min</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right column -->
+            <div>
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-clipboard-list"></i> Current Status</div>
+                    <div class="status-note">
+                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                        Condition remains critical but stable on current support. Monitoring for abdominal distension and sepsis markers.
+                    </div>
+                    <div class="card-title" style="margin-top: 16px;">Activity</div>
+                    <div class="activity-tags">
+                        <span class="activity-tag"><i class="fas fa-utensils"></i> NPO</span>
+                        <span class="activity-tag"><i class="fas fa-tint"></i> IV Fluids</span>
+                        <span class="activity-tag"><i class="fas fa-capsules"></i> Antibiotics</span>
+                        <span class="activity-tag"><i class="fas fa-thermometer-half"></i> Temp Control</span>
+                        <span class="activity-tag"><i class="fas fa-fire"></i> Radiant Warmer (36.5°C)</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-heartbeat"></i> Latest Vitals (Snapshot)</div>
+                    <div class="vitals-panel">
+                        <div class="vital-item">
+                            <div class="data-label">HR</div>
+                            <div class="vital-value">142</div>
+                            <div>bpm</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="data-label">SpO₂</div>
+                            <div class="vital-value">96%</div>
+                            <div>on 35% FiO₂</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="data-label">RR</div>
+                            <div class="vital-value">64</div>
+                            <div>bpm</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="data-label">Mean BP</div>
+                            <div class="vital-value">42</div>
+                            <div>mmHg</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="data-label">Temp</div>
+                            <div class="vital-value">36.8</div>
+                            <div>°C</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctor signature -->
+        <div class="doctor-footer">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-user-md" style="font-size: 2.4rem; color:#1f6eaf;"></i>
+                <div><strong>Dr. Aryan Sharma</strong><br><span style="color:#55738e;">Senior Pediatrician</span></div>
+            </div>
+            <div style="color:#5b7c95;">
+                <i class="far fa-calendar-alt"></i> Last updated: today, 14:20
+            </div>
+        </div>
+        <div style="margin-top: 20px; font-size:0.8rem; color:#6a8aa3; text-align:right; border-top: 1px solid #e0eaf3; padding-top: 16px;">
+            © 2024 CareCore Hospital Information Systems. All rights reserved.
+        </div>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

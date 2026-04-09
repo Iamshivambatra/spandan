@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Baby Registration · Spandan NICU</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+		
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1f2f;
+        }
+
+        .app-container {
+            max-width: 1440px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            display: flex;
+            border: 1px solid #e3eaf2;
+            min-height: 700px;
+        }
+
+        /* ---------- SIDEBAR ---------- */
+        .sidebar {
+            width: 280px;
+            background: #f8fbfe;
+            border-right: 1px solid #dee9f2;
+            padding: 28px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-area {
+            padding: 0 16px 28px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0a3147;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-area i {
+            color: #1f6eaf;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            flex: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;  
+            margin: 4px 8px;
+            border-radius: 18px;
+            color: #2b4e6e;
+            font-weight: 500;
+            transition: all 0.1s;
+            cursor: default;
+        }
+		
+		.nav-item a {
+		   padding: 14px 18px;
+		}
+		
+		.nav-item:not(.active):hover {
+            background: #e7f0fa;
+        }
+		
+		a {
+		   text-decoration: none;
+		   color: #2b4e6e;
+		}
+
+        .nav-item i {
+            width: 24px;
+            font-size: 1.3rem;
+        }
+
+        .nav-item.active {
+            background: #d4e3ff;
+            color: #0a3147;
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            padding: 24px 16px 8px;
+            font-size: 0.8rem;
+            color: #5d7e99;
+            border-top: 1px solid #d4e2ee;
+            margin-top: 16px;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .main-content {
+            flex: 1;
+            padding: 32px 40px;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e44;
+            margin-bottom: 8px;
+        }
+
+        .page-sub {
+            color: #4a6f8a;
+            margin-bottom: 32px;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-bottom: 1px solid #e0eaf3;
+            padding-bottom: 24px;
+        }
+
+        /* form sections */
+        .form-section {
+            background: #fafcff;
+            border-radius: 28px;
+            padding: 28px 30px;
+            margin-bottom: 28px;
+            border: 1px solid #e6edf6;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #1d405b;
+        }
+
+        .section-header i {
+            color: #1f6eaf;
+            font-size: 1.5rem;
+            width: 32px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px 30px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1f405b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .input-field {
+            padding: 14px 18px;
+            border: 1.8px solid #d9e2ec;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            background: white;
+            transition: border 0.2s;
+        }
+
+        .input-field:focus {
+            border-color: #1f6eaf;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(31,110,175,0.06);
+        }
+
+        select.input-field {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232b4e6e" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+        }
+
+        .inline-hint {
+            font-size: 0.8rem;
+            color: #6e8da3;
+            margin-top: 4px;
+        }
+
+        .row-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-submit {
+            background: #0a3147;
+            color: white !important;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: default;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 16px rgba(10,49,71,0.08);
+            margin-top: 16px;
+            border: 1px solid #255e83;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .copyright {
+            color: #5b7c95;
+            font-size: 0.85rem;
+        }
+
+        hr {
+            margin: 28px 0 16px;
+            border: 0;
+            border-top: 1px solid #dee9f2;
+        }
+
+        @media (max-width: 900px) {
+            .app-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #dee9f2;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-area">
+            <i class="fas fa-heartbeat"></i>
+            <span>Spandan</span>
+        </div>
+        <div class="nav-menu">
+<div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+<div class="nav-item active"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
+<div class="nav-item"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
+<div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
+<div class="nav-item"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
+<div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
+        </div>
+        <div class="sidebar-footer">
+            <i class="far fa-clock"></i> Last sync: 2 mins ago<br>
+            <span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span>
+        </div>
+    </div>
+
+    <!-- MAIN FORM -->
+    <div class="main-content">
+        <h1 class="page-title">New Baby Registration</h1>
+        <div class="page-sub">
+            Complete the form below to register a newborn in the system. Ensure all medical and admission details are cross-checked with the delivery records.
+        </div>
+
+        <!-- BIRTH DETAILS -->
+        <div class="form-section">
+            <div class="section-header">
+                <i class="fas fa-baby-carriage"></i>
+                <span>Birth Details</span>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label class="input-label">Baby's Full Name</label>
+                    <input class="input-field" type="text" placeholder="Legal name (if decided)" value="Baby of Anjali">
+                    <span class="inline-hint">As per birth certificate</span>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Gender</label>
+                    <select class="input-field">
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Weight (kg)</label>
+                    <input class="input-field" type="text" placeholder="e.g. 3.45" value="2.84">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Date of Birth</label>
+                    <input class="input-field" type="text" placeholder="mm/dd/yyyy" value="04/07/2026">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Time of Birth</label>
+                    <input class="input-field" type="text" placeholder="--:--" value="14:23">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Blood Type (Optional)</label>
+                    <select class="input-field">
+                        <option>Unknown</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOTHER DETAILS -->
+        <div class="form-section">
+            <div class="section-header">
+                <i class="fas fa-female"></i>
+                <span>Mother Details</span>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label class="input-label">Mother's Name</label>
+                    <input class="input-field" type="text" placeholder="Full legal name" value="Anjali Sharma">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Mother's Patient ID</label>
+                    <input class="input-field" type="text" placeholder="ID-000000" value="ID-784521">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Contact Number</label>
+                    <input class="input-field" type="tel" placeholder="+1 (555) 000-0000" value="+91 98765 43210">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Emergency Contact Name</label>
+                    <input class="input-field" type="text" placeholder="Relative or Spouse" value="Rahul Sharma (spouse)">
+                </div>
+            </div>
+        </div>
+
+        <!-- ADMISSION DETAILS -->
+        <div class="form-section">
+            <div class="section-header">
+                <i class="fas fa-hospital-user"></i>
+                <span>Admission Details</span>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label class="input-label">Assigned Doctor</label>
+                    <select class="input-field">
+                        <option>Select Attending Physician</option>
+                        <option selected>Dr. Aryan Sharma (Pediatrician)</option>
+                        <option>Dr. Meera Kapoor (Neonatologist)</option>
+                        <option>Dr. Vikram Singh</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Ward / Floor</label>
+                    <input class="input-field" type="text" placeholder="Room / Bed No." value="NICU · Bed 04">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Maternity Ward</label>
+                    <input class="input-field" type="text" placeholder="e.g. Room 402-B" value="Room 402-B">
+                </div>
+                <div class="input-group full-width">
+                    <label class="input-label">Admission Notes</label>
+                    <textarea class="input-field" rows="3" placeholder="Special requirements, medications, or observations...">Preterm (36w), mild respiratory support. Mother stable.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- actions -->
+        <div class="form-footer">
+            <div class="copyright">
+                <i class="far fa-copyright"></i> 2024 CareCore Hospital Information Systems. All rights reserved.
+            </div>
+            <span class="btn-submit"><a href="img4_nurse.html" style="padding:18px 36px;color: white"><i class="fas fa-save"></i> Register Baby & Admit</a></span>
+        </div>
+        <hr>
+        <div style="display: flex; gap: 24px; font-size:0.85rem; color:#5f829b;">
+            <span><i class="fas fa-shield-alt"></i> Data encrypted · HIPAA compliant</span>
+            <span><i class="far fa-clock"></i> Last saved: draft auto-saved</span>
+        </div>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
