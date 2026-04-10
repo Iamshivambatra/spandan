@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics · State Distribution · Spandan</title>
+	<link rel="stylesheet" href="index.css">
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,17 +52,30 @@
         }
         .logo-area i { color: #1f6eaf; font-size: 1.8rem; }
         .nav-menu { flex: 1; }
-        .nav-item {
+        .nav-item:not(.active):hover {
+            background: #e7f0fa;
+        }
+		
+		a {
+		   text-decoration: none;
+		   color: #2b4e6e;
+		}
+
+         .nav-item {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 14px 18px;
+            gap: 16px;  
             margin: 4px 8px;
             border-radius: 18px;
             color: #2b4e6e;
             font-weight: 500;
+            transition: all 0.1s;
             cursor: default;
         }
+		
+		.nav-item a {
+		   padding: 14px 18px;
+		}
         .nav-item i { width: 24px; font-size: 1.3rem; }
         .nav-item.active { background: #d4e3ff; color: #0a3147; font-weight: 600; }
         .sidebar-footer {
@@ -251,12 +265,13 @@
     <div class="sidebar">
         <div class="logo-area"><i class="fas fa-heartbeat"></i><span>Spandan</span></div>
         <div class="nav-menu">
-            <div class="nav-item"><i class="fas fa-th-large"></i> Dashboard</div>
-            <div class="nav-item"><i class="fas fa-baby"></i> Register New baby</div>
-            <div class="nav-item"><i class="fas fa-procedures"></i> Admitted Babies</div>
-            <div class="nav-item"><i class="fas fa-check-circle"></i> Discharged Babies</div>
-            <div class="nav-item active"><i class="fas fa-chart-pie"></i> Analytics</div>
-            <div class="nav-item"><i class="fas fa-cog"></i> Settings</div>
+		<div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+			<div id="register_baby" class="nav-item"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
+			<div class="nav-item"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
+			<div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
+			<div class="nav-item active"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
+			<div class="nav-item"><a href="img21_doctor.html"><i class="fas fa-video"></i> Video Call History</a></div>
+			<div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
         </div>
         <div class="sidebar-footer"><i class="far fa-clock"></i> Last sync: 2 mins ago<br><span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span></div>
     </div>

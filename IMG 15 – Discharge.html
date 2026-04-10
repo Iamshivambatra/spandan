@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discharge Summary · B/O Anjali Sharma</title>
+	<link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; } body { font-family:Inter; background:#eef2f7; padding:24px; display:flex; justify-content:center; } .app-container { max-width:1440px; width:100%; background:#fff; border-radius:32px; display:flex; border:1px solid #e3eaf2; } .sidebar { width:280px; background:#f8fbfe; padding:28px 12px; } .logo-area { font-weight:700; } .nav-item:not(.active):hover {
+            background: #e7f0fa;
+        }
+		
+		a {
+		   text-decoration: none;
+		   color: #2b4e6e;
+		}
+.logo-area {
+    padding: 0 16px 28px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #0a3147;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-area i {
+    color: #1f6eaf;
+    font-size: 1.8rem;
+}
+         .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;  
+            margin: 4px 8px;
+            border-radius: 18px;
+            color: #2b4e6e;
+            font-weight: 500;
+            transition: all 0.1s;
+            cursor: default;
+        }
+		.nav-item i {
+    width: 24px;
+    font-size: 1.3rem;
+}
+		.nav-item a {
+		   padding: 14px 18px;
+		} .nav-item.active { background:#d4e3ff; } .main-content { flex:1; padding:32px 36px; } .patient-header { display:flex; justify-content:space-between; } .discharged-badge {     background: #e1f5e8;
+    color: #1e6f5c;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+	max-height: 38px;
+    border: 1px solid #b0d9c0; } .tabs-container { display:flex; gap:8px;flex-wrap:wrap; margin:20px 0; } .tab { padding:10px 22px; background:#f1f6fc; border-radius:40px; } .tab.active { background:#0a3147; color:#fff; } .card { background:#fafcff; border-radius:28px; padding:24px; border:1px solid #e6edf6; margin-bottom:24px; } .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; } .field-label { font-weight:600; color:#2c5779; } .field-value { background:#f4f9fe; padding:10px 14px; border-radius:16px; border:1px solid #e0eaf3; } .doctor-footer { margin-top:32px; border-top:1px solid #d0dde9; padding-top:24px; display:flex; justify-content:space-between; }
+        .readonly-note { color:#8a9eb0; font-size:0.8rem; }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="sidebar"><div class="logo-area"><i class="fas fa-heartbeat"></i> Spandan</div>
+	<div class="nav-menu">
+        <div class="nav-menu">
+            			            <div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+<div id="register_baby" class="nav-item"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
+<div class="nav-item"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
+<div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
+<div class="nav-item"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
+<div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
+	</div></div></div>
+    <div class="main-content">
+        <div class="patient-header"><div><h1>B/O Anjali Sharma</h1><div>ID:4502 · Bed:04 · Male</div></div><div class="discharged-badge"><i class="fas fa-check-circle"></i> DISCHARGED · Oct 30, 2023</div></div>
+        <div class="tabs-container">
+		<a href="discharge.html" class="tab">Summary</a>
+            <a href="IMG 6 – Clinical Notes & Documents.html" class="tab">Clinical Notes</a>
+            <a href="IMG 11 – Treatment Continuation Sheet.html" class="tab">Treatment Orders</a>
+            <a href="IMG 12 – Vitals.html" class="tab">Vitals</a>
+            <a href="IMG 10 – Investigation.html" class="tab">Investigations</a>
+            <a href="IMG 9 – Video Consult History.html" class="tab">Video Consult History</a>
+			<a class="tab active">Discharge</a>
+		</div>
+        <h3>Discharge Entry <span class="readonly-note"><i class="fas fa-lock"></i> Completed & locked</span></h3>
+        <div class="card"><h4>Type of Discharge</h4><div class="field-value">Routine Discharge</div></div>
+        <div class="grid-2">
+            <div class="card"><h4>Current Clinical Status</h4><div><span class="field-label">Overall:</span> Stable</div><div><span class="field-label">Vitals:</span> Stable</div><div><span class="field-label">Feeding:</span> Feeding Well</div><div><span class="field-label">Respiratory:</span> Room Air</div></div>
+            <div class="card"><h4>Diagnosis</h4><div><span class="field-label">Primary:</span> 32w Prematurity, VLBW</div><div><span class="field-label">Secondary:</span> Resolved RDS, Sepsis</div></div>
+        </div>
+        <div class="card"><h4>Discharge Medications</h4><div>Iron drops, Vitamin D3 – GIVEN</div></div>
+        <div class="grid-2">
+            <div class="card"><h4>Follow-Up</h4><div>11/20/2023 · High-risk Neonatal Clinic</div></div>
+            <div class="card"><h4>Parent Instruction</h4><div>Feeding, hygiene, danger signs explained. <br><label><input type="radio" disabled checked> Yes</label></div></div>
+        </div>
+        <div class="doctor-footer"><div><i class="fas fa-user-md"></i> Dr. Aryan Sharma</div><div>Discharge finalised: Oct 30, 2023</div></div>
+        <div style="margin-top:20px; font-size:0.8rem; color:#6a8aa3; text-align:right;">© 2024 CareCore Hospital Information Systems.</div>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

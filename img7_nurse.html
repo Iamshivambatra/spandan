@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBSU Discharge Card · B/O Anjali Sharma · Spandan</title>
+	<link rel="stylesheet" href="index.css">
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,12 +68,19 @@
         .nav-menu {
             flex: 1;
         }
+		.nav-item:not(.active):hover {
+            background: #e7f0fa;
+        }
 
-        .nav-item {
+        a {
+		   text-decoration: none;
+		   color: #2b4e6e;
+		}
+
+         .nav-item {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 14px 18px;
+            gap: 16px;  
             margin: 4px 8px;
             border-radius: 18px;
             color: #2b4e6e;
@@ -80,6 +88,10 @@
             transition: all 0.1s;
             cursor: default;
         }
+		
+		.nav-item a {
+		   padding: 14px 18px;
+		}
 
         .nav-item i {
             width: 24px;
@@ -159,7 +171,6 @@
             font-weight: 500;
             background: #f1f6fc;
             color: #1b4b6e;
-            cursor: default;
         }
 
         .tab.active {
@@ -246,6 +257,15 @@
             gap: 8px;
             flex-wrap: wrap;
         }
+		
+		.btn-save {
+			background: green;
+			color: white;
+			padding: 8px 20px;
+			border-radius: 40px;
+			font-size: 1rem;
+			font-weight: 700;
+		}
 
         .inline-label {
             font-weight: 500;
@@ -285,12 +305,13 @@
             <span>Spandan</span>
         </div>
         <div class="nav-menu">
-            <div class="nav-item"><i class="fas fa-th-large"></i> Dashboard</div>
-            <div class="nav-item"><i class="fas fa-baby"></i> Register New baby</div>
-            <div class="nav-item active"><i class="fas fa-procedures"></i> Admitted Babies</div>
-            <div class="nav-item"><i class="fas fa-check-circle"></i> Discharged Babies</div>
-            <div class="nav-item"><i class="fas fa-chart-pie"></i> Analytics</div>
-            <div class="nav-item"><i class="fas fa-cog"></i> Settings</div>
+			            <div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+<div id="register_baby" class="nav-item"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
+<div class="nav-item"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
+<div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
+<div class="nav-item"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
+ <div class="nav-item"><a href="img21_doctor.html"><i class="fas fa-video"></i> Video Call History</a></div>
+<div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
         </div>
         <div class="sidebar-footer">
             <i class="far fa-clock"></i> Last sync: 2 mins ago<br>
@@ -310,20 +331,21 @@
                     <span><i class="fas fa-calendar-day"></i> 2 Days Old</span>
                 </div>
             </div>
-            <div class="critical-badge">
+           <div class="critical-badge">
                 <i class="fas fa-exclamation-triangle"></i> CRITICAL
             </div>
+			<div class="btn-save"><i class="fas fa-save"></i> Save</div>
         </div>
 
         <!-- Tabs: Summary likely active for discharge card -->
         <div class="tabs-container">
-            <span class="tab active">Summary</span>
-            <span class="tab">Clinical Notes</span>
-            <span class="tab">Treatment Orders</span>
-            <span class="tab">Vitals</span>
-            <span class="tab">Investigations</span>
-            <span class="tab">Video Consult</span>
-            <span class="tab">History</span>
+            <a href="img5_nurse.html" class="tab">Summary</a>
+            <a href="img6_nurse.html" class="tab">Clinical Notes</a>
+            <a href="img12_nurse.html" class="tab">Treatment Orders</a>
+            <a href="img13_nurse.html" class="tab">Vitals</a>
+            <a href="img14_nurse.html" class="tab">Investigations</a>
+            <a href="img22_doctor.html" class="tab">Video Consult History</a>
+            <a href="img15_nurse.html" class="tab">Discharge</a>
         </div>
 
         <!-- NBSU DISCHARGE CARD -->

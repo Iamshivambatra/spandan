@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBSU · Neonatal Case Record · Spandan</title>
+    <title>NBSU Case Sheet · B/O Anjali Sharma · Spandan</title>
 	<link rel="stylesheet" href="index.css">
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,29 +91,35 @@
             background: #ffffff;
             overflow-y: auto;
         }
-        .page-header-title {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: #0a2e44;
-            margin-bottom: 4px;
-        }
-        .template-name-badge {
-            background: #0a3147;
-            color: white;
-            padding: 6px 20px;
-            border-radius: 40px;
-            display: inline-block;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
+        .patient-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 16px;
         }
-        .subhead {
-            color: #4a6f8a;
-            margin-bottom: 24px;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #d0dde9;
-            padding-bottom: 16px;
+        .patient-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e44;
+            margin-bottom: 6px;
+        }
+        .meta-tags {
+            display: flex;
+            gap: 16px;
+            color: #3e627c;
+            font-weight: 500;
+        }
+        .critical-badge {
+            background: #ffe8e8;
+            color: #c63636;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #f3b8b8;
         }
         .tabs-container {
             display: flex;
@@ -190,20 +196,13 @@
             align-items: center;
         }
         .footprint-placeholder {
-            background: #f4f9ff;
-            border-radius: 28px;
-            padding: 30px 24px;
+            background: #e9f0f7;
+            border-radius: 24px;
+            padding: 24px;
             text-align: center;
             color: #2c5779;
             font-weight: 500;
-            border: 2px dashed #1f6eaf;
-            box-shadow: 0 6px 14px rgba(0,20,40,0.04);
-        }
-        .footprint-icon {
-            font-size: 4.5rem;
-            color: #1f6eaf;
-            margin-bottom: 16px;
-            opacity: 0.8;
+            border: 1px dashed #b8cee2;
         }
         .doctor-footer {
             margin-top: 32px;
@@ -219,49 +218,6 @@
             background: #e1ecf5;
             font-weight: 600;
         }
-        .image-caption {
-            font-size: 0.8rem;
-            color: #55738e;
-            margin-top: 10px;
-        }
-		.patient-header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 16px;
-		}
-		.patient-info h1 {
-			font-size: 2rem;
-			font-weight: 700;
-			color: #0a2e44;
-			margin-bottom: 6px;
-		}
-		.meta-tags {
-			display: flex;
-			gap: 16px;
-			color: #3e627c;
-			font-weight: 500;
-		}
-		.critical-badge {
-			background: #ffe8e8;
-			color: #c63636;
-			font-weight: 700;
-			padding: 8px 20px;
-			border-radius: 40px;
-			font-size: 1rem;
-			display: flex;
-			align-items: center;
-			gap: 8px;
-			border: 1px solid #f3b8b8;
-		}
-		.btn-save {
-			background: green;
-			color: white;
-			padding: 8px 20px;
-			border-radius: 40px;
-			font-size: 1rem;
-			font-weight: 700;
-		}
         @media (max-width: 900px) {
             .app-container { flex-direction: column; }
             .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #dee9f2; }
@@ -271,16 +227,15 @@
 </head>
 <body>
 <div class="app-container">
-    <!-- SIDEBAR: "Admitted Babies" active -->
+    <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="logo-area"><i class="fas fa-heartbeat"></i><span>Spandan</span></div>
         <div class="nav-menu">
-			            <div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
+            <div class="nav-item"><a href="img2_nurse.html"><i class="fas fa-th-large"></i> Dashboard</a></div>
 <div id="register_baby" class="nav-item"><a href="img3_nurse.html"><i class="fas fa-baby"></i> Register New baby</a></div>
 <div class="nav-item"><a href="img4_nurse.html"><i class="fas fa-procedures"></i> Admitted Babies</a></div>
 <div class="nav-item"><a href="img16_nurse.html"><i class="fas fa-check-circle"></i> Discharged Babies</a></div>
 <div class="nav-item"><a href="img17_nurse.html"><i class="fas fa-chart-pie"></i> Analytics</a></div>
- <div class="nav-item"><a href="img21_doctor.html"><i class="fas fa-video"></i> Video Call History</a></div>
 <div class="nav-item"><a href="img18_nurse.html"><i class="fas fa-cog"></i> Settings</a></div>
         </div>
         <div class="sidebar-footer"><i class="far fa-clock"></i> Last sync: 2 mins ago<br><span style="margin-top:8px; display:block;">v4.2.0 · HIPAA secure</span></div>
@@ -288,7 +243,7 @@
 
     <!-- MAIN CONTENT -->
     <div class="main-content">
-	 <div class="patient-header">
+        <div class="patient-header">
             <div class="patient-info">
                 <h1>B/O Anjali Sharma</h1>
                 <div class="meta-tags">
@@ -298,42 +253,35 @@
                     <span><i class="fas fa-calendar-day"></i> 2 Days Old</span>
                 </div>
             </div>
-            <div class="critical-badge">
-                <i class="fas fa-exclamation-triangle"></i> CRITICAL
-            </div>
-			<div class="btn-save"><i class="fas fa-save"></i> Save</div>
+            <div class="critical-badge"><i class="fas fa-exclamation-triangle"></i> CRITICAL</div>
         </div>
-        
 
-        <!-- PATIENT TABS: "Clinical Notes" active -->
+        <!-- Tabs: Clinical Notes active (since case sheet is part of notes) -->
         <div class="tabs-container">
-            <a href="img5_nurse.html" class="tab">Summary</a>
-            <a href="img6_nurse.html" class="tab">Clinical Notes</a>
-            <a href="img12_nurse.html" class="tab">Treatment Orders</a>
-            <a href="img13_nurse.html" class="tab">Vitals</a>
-            <a href="img14_nurse.html" class="tab">Investigations</a>
-            <a href="img22_doctor.html" class="tab">Video Consult History</a>
-            <a href="img15_nurse.html" class="tab">Discharge</a>
-        </div>
-		
-		<!-- Template name badge prominently displayed -->
-        <span class="template-name-badge"><i class="far fa-file-alt" style="margin-right: 8px;"></i>NEONATAL CASE RECORD SHEET · NHM</span>
-        
-        <div class="page-header-title">NEWBORN STABILIZATION UNIT (NBSU)</div>
-        <div class="subhead">
-            Community Health Center / Civil Hospital · District · 
-            <strong>NEONATAL CASE RECORD SHEET</strong> (Developed by National Health Mission)
+            <a href="discharge.html" class="tab">Summary</a>
+            <a href="IMG 6 – Clinical Notes & Documents.html" class="tab active">Clinical Notes</a>
+            <a href="IMG 11 – Treatment Continuation Sheet.html" class="tab">Treatment Orders</a>
+            <a href="IMG 12 – Vitals.html" class="tab">Vitals</a>
+            <a href="IMG 10 – Investigation.html" class="tab">Investigations</a>
+            <a href="IMG 9 – Video Consult History.html" class="tab">Video Consult History</a>
         </div>
 
-        <!-- CLINICAL INDICATIONS -->
+        <!-- NBSU CASE SHEET (filled) -->
+        <div style="margin-bottom: 16px;">
+            <span style="background: #0a3147; color:white; padding:6px 20px; border-radius: 40px; font-weight:600; font-size:0.9rem;"><i class="far fa-file-alt"></i> NEONATAL CASE RECORD SHEET · NHM</span>
+        </div>
+        <h2 style="font-size:1.7rem; font-weight:700; color:#0a2e44; margin-bottom:4px;">NEWBORN STABILIZATION UNIT (NBSU)</h2>
+        <div style="color: #4a6f8a; margin-bottom: 24px;">Community Health Center / Civil Hospital · District · <strong>NEONATAL CASE RECORD SHEET</strong> (Developed by National Health Mission)</div>
+
+        <!-- CLINICAL INDICATIONS (filled) -->
         <div class="section-card">
-            <div class="section-title"><i class="fas fa-list-check"></i> CLINICAL INDICATIONS (Click relevant)</div>
+            <div class="section-title"><i class="fas fa-list-check"></i> CLINICAL INDICATIONS</div>
             <div class="indication-list">
-                <div class="indication-item"><input type="checkbox"> 1. Prematurity <34 wks</div>
-                <div class="indication-item"><input type="checkbox"> 2. Low Birth Weight <1800 gm</div>
+                <div class="indication-item"><input type="checkbox" checked disabled> 1. Prematurity <34 wks (28+4)</div>
+                <div class="indication-item"><input type="checkbox" checked disabled> 2. Low Birth Weight <1800 gm (1120g)</div>
                 <div class="indication-item"><input type="checkbox"> 3. Perinatal Asphyxia</div>
                 <div class="indication-item"><input type="checkbox"> 4. Neonatal Jaundice</div>
-                <div class="indication-item"><input type="checkbox"> 5. Grunting/Retractions</div>
+                <div class="indication-item"><input type="checkbox" checked disabled> 5. Grunting/Retractions</div>
                 <div class="indication-item"><input type="checkbox"> 6. Large Baby (>4 kg)</div>
                 <div class="indication-item"><input type="checkbox"> 7. Retinal Vein Fistula</div>
                 <div class="indication-item"><input type="checkbox"> 8. Cerebral Palsy</div>
@@ -343,7 +291,7 @@
                 <div class="indication-item"><input type="checkbox"> 12. Oligohydramnios</div>
                 <div class="indication-item"><input type="checkbox"> 13. Abdominal Distension</div>
                 <div class="indication-item"><input type="checkbox"> 14. Hypothermia</div>
-                <div class="indication-item"><input type="checkbox"> 15. Poor perfusion (CRT>3s)</div>
+                <div class="indication-item"><input type="checkbox" checked disabled> 15. Poor perfusion (CRT>3s)</div>
                 <div class="indication-item"><input type="checkbox"> 16. Meconium Aspiration</div>
                 <div class="indication-item"><input type="checkbox"> 17. Bleeding</div>
                 <div class="indication-item"><input type="checkbox"> 18. Diarrhoea</div>
@@ -353,18 +301,18 @@
 
         <!-- PRESUMPTIVE DIAGNOSIS -->
         <div class="section-card">
-            <div class="section-title"><i class="fas fa-stethoscope"></i> PRESUMPTIVE DIAGNOSIS (select most relevant)</div>
+            <div class="section-title"><i class="fas fa-stethoscope"></i> PRESUMPTIVE DIAGNOSIS</div>
             <div class="diagnosis-options">
-                <span><input type="radio" name="diag"> LBW (P07.1)</span>
-                <span><input type="radio" name="diag"> Prematurity (P07.3)</span>
-                <span><input type="radio" name="diag"> SGA/IUGR (P05.1)</span>
-                <span><input type="radio" name="diag"> RDS/HMD (P22.0)</span>
-                <span><input type="radio" name="diag"> TTN (P22.1)</span>
-                <span><input type="radio" name="diag"> Pneumonia (P23)</span>
-                <span><input type="radio" name="diag"> Asphyxia (P21.0)</span>
-                <span><input type="radio" name="diag"> Neonatal Sepsis (P36)</span>
-                <span><input type="radio" name="diag"> Haemorrhage (P50-P52)</span>
-                <span><input type="radio" name="diag"> Congenital Malformation</span>
+                <span><input type="radio" name="diag" disabled> LBW (P07.1)</span>
+                <span><input type="radio" name="diag" checked disabled> Prematurity (P07.3)</span>
+                <span><input type="radio" name="diag" disabled> SGA/IUGR (P05.1)</span>
+                <span><input type="radio" name="diag" checked disabled> RDS/HMD (P22.0)</span>
+                <span><input type="radio" name="diag" disabled> TTN (P22.1)</span>
+                <span><input type="radio" name="diag" disabled> Pneumonia (P23)</span>
+                <span><input type="radio" name="diag" disabled> Asphyxia (P21.0)</span>
+                <span><input type="radio" name="diag" checked disabled> Neonatal Sepsis (P36)</span>
+                <span><input type="radio" name="diag" disabled> Haemorrhage (P50-P52)</span>
+                <span><input type="radio" name="diag" disabled> Congenital Malformation</span>
             </div>
         </div>
 
@@ -372,30 +320,30 @@
         <div class="section-card">
             <div class="section-title"><i class="fas fa-baby"></i> BABY'S INFORMATION – AT BIRTH</div>
             <div class="grid-2col">
-                <div class="field-group"><span class="field-label">Birth Weight (kg)</span><div class="field-value">2.5 kg</div></div>
-                <div class="field-group"><span class="field-label">Gestational age (completed weeks)</span><div class="field-value">34 weeks</div></div>
+                <div class="field-group"><span class="field-label">Birth Weight (kg)</span><div class="field-value">1.12 kg</div></div>
+                <div class="field-group"><span class="field-label">Gestational age (completed weeks)</span><div class="field-value">28 weeks + 4 days</div></div>
             </div>
         </div>
 
-        <!-- GENERAL EXAMINATION -->
+        <!-- GENERAL EXAMINATION (filled) -->
         <div class="section-card">
             <div class="section-title"><i class="fas fa-notes-medical"></i> GENERAL EXAMINATION</div>
             <div class="grid-4col">
-                <div class="field-group"><span class="field-label">General Condition</span><div class="field-value">Alert</div></div>
-                <div class="field-group"><span class="field-label">Apnea</span><div class="field-value">No</div></div>
-                <div class="field-group"><span class="field-label">Breast fed within 1h?</span><div class="field-value">Yes</div></div>
-                <div class="field-group"><span class="field-label">CRT >3 secs</span><div class="field-value">No</div></div>
-                <div class="field-group"><span class="field-label">Tone</span><div class="field-value">Active</div></div>
-                <div class="field-group"><span class="field-label">Temperature (°C)</span><div class="field-value">36.5</div></div>
-                <div class="field-group"><span class="field-label">Heart Rate (bpm)</span><div class="field-value">142</div></div>
-                <div class="field-group"><span class="field-label">Respiratory Rate (/min)</span><div class="field-value">52</div></div>
-                <div class="field-group"><span class="field-label">Color</span><div class="field-value">Pink</div></div>
-                <div class="field-group"><span class="field-label">Skin pinch >2 secs</span><div class="field-value">No</div></div>
+                <div class="field-group"><span class="field-label">General Condition</span><div class="field-value">Lethargic</div></div>
+                <div class="field-group"><span class="field-label">Apnea</span><div class="field-value">Yes (mild)</div></div>
+                <div class="field-group"><span class="field-label">Breast fed within 1h?</span><div class="field-value">No</div></div>
+                <div class="field-group"><span class="field-label">CRT >3 secs</span><div class="field-value">Yes</div></div>
+                <div class="field-group"><span class="field-label">Tone</span><div class="field-value">Hypotonic</div></div>
+                <div class="field-group"><span class="field-label">Temperature (°C)</span><div class="field-value">36.2</div></div>
+                <div class="field-group"><span class="field-label">Heart Rate (bpm)</span><div class="field-value">148</div></div>
+                <div class="field-group"><span class="field-label">Respiratory Rate (/min)</span><div class="field-value">68</div></div>
+                <div class="field-group"><span class="field-label">Color</span><div class="field-value">Pale/cyanosed</div></div>
+                <div class="field-group"><span class="field-label">Skin pinch >2 secs</span><div class="field-value">Yes</div></div>
                 <div class="field-group"><span class="field-label">Convulsions</span><div class="field-value">None</div></div>
                 <div class="field-group"><span class="field-label">Jaundice</span><div class="field-value">No</div></div>
-                <div class="field-group"><span class="field-label">Lung Auscultation</span><div class="field-value">Clear</div></div>
-                <div class="field-group"><span class="field-label">Blood Sugar (mg/dL)</span><div class="field-value">58</div></div>
-                <div class="field-group"><span class="field-label">Oxygen Saturation (%)</span><div class="field-value">96%</div></div>
+                <div class="field-group"><span class="field-label">Lung Auscultation</span><div class="field-value">Decreased air entry, crepitations</div></div>
+                <div class="field-group"><span class="field-label">Blood Sugar (mg/dL)</span><div class="field-value">42</div></div>
+                <div class="field-group"><span class="field-label">Oxygen Saturation (%)</span><div class="field-value">88% (pre-CPAP)</div></div>
             </div>
         </div>
 
@@ -403,10 +351,10 @@
         <div class="section-card">
             <div class="section-title"><i class="fas fa-lungs"></i> SYSTEMIC EXAMINATION</div>
             <div class="grid-2col">
-                <div class="field-group"><span class="field-label">CVS</span><div class="field-value">S1S2 normal, no murmur</div></div>
-                <div class="field-group"><span class="field-label">Respiratory</span><div class="field-value">Vesicular breath sounds</div></div>
-                <div class="field-group"><span class="field-label">Neurological</span><div class="field-value">Normal tone, reflexes</div></div>
-                <div class="field-group"><span class="field-label">Abdomen</span><div class="field-value">Soft, no organomegaly</div></div>
+                <div class="field-group"><span class="field-label">CVS</span><div class="field-value">Tachycardia, no murmur, weak pulses</div></div>
+                <div class="field-group"><span class="field-label">Respiratory</span><div class="field-value">Grunting, nasal flaring, subcostal retractions</div></div>
+                <div class="field-group"><span class="field-label">Neurological</span><div class="field-value">Hypotonia, weak suck</div></div>
+                <div class="field-group"><span class="field-label">Abdomen</span><div class="field-value">Soft, mild distension, bowel sounds sluggish</div></div>
             </div>
         </div>
 
@@ -414,42 +362,34 @@
         <div class="grid-2col" style="margin-bottom:24px;">
             <div class="section-card" style="margin-bottom:0;">
                 <div class="section-title"><i class="fas fa-syringe"></i> TREATMENT ADVISED</div>
-                <div class="field-value" style="background:transparent; border:none; padding:0;">IV fluids, antibiotics (Ampi+Gent), O2 if needed, phototherapy.</div>
+                <div class="field-value" style="background:transparent; border:none; padding:0;">• IV fluids (10% Dextrose) <br>• Inj. Ampicillin + Gentamicin <br>• CPAP (PEEP 5, FiO₂ 35%) <br>• Caffeine citrate loading <br>• Phototherapy (if bili rises) <br>• Minimal handling, thermal care</div>
             </div>
             <div class="section-card" style="margin-bottom:0;">
                 <div class="section-title"><i class="fas fa-flask"></i> INVESTIGATIONS ADVISED</div>
-                <div class="field-value" style="background:transparent; border:none; padding:0;">CBC, CRP, blood culture, RBS, CXR, serum bilirubin.</div>
+                <div class="field-value" style="background:transparent; border:none; padding:0;">• CBC, CRP, Blood culture <br>• Blood gas, Serum electrolytes <br>• Chest X-ray <br>• Cranial ultrasound <br>• RBS monitoring q6h</div>
             </div>
         </div>
 
-        <!-- FOOT PRINT & OUTCOME with enhanced image representation -->
+        <!-- FOOT PRINT & OUTCOME -->
         <div class="grid-2col" style="gap:24px;">
             <div class="section-card">
                 <div class="section-title"><i class="fas fa-shoe-prints"></i> FOOT PRINT (LEFT FOOT)</div>
                 <div class="footprint-placeholder">
-                    <div class="footprint-icon">
-                        <i class="fas fa-baby"></i>
-                        <i class="fas fa-shoe-prints" style="margin-left: 12px;"></i>
-                    </div>
-                    <p style="font-weight: 600; font-size: 1.1rem;">👣 Newborn Footprint</p>
-                    <p style="opacity: 0.8;">Ink impression / scanned image</p>
-                    <div class="image-caption">
-                        <i class="far fa-image"></i> Actual footprint image (as in NBSU record)
-                    </div>
+                    <i class="fas fa-baby" style="font-size: 3rem; opacity: 0.6;"></i>
+                    <p>👣 Footprint recorded (ink) · ID verified</p>
                 </div>
             </div>
             <div class="section-card">
                 <div class="section-title"><i class="fas fa-flag-checkered"></i> FINAL OUTCOME</div>
                 <div class="inline-options" style="margin-bottom:20px;">
-                    <label><input type="radio" name="outcome" checked> Successfully Discharged</label>
-                    <label><input type="radio" name="outcome"> LAMA</label>
-                    <label><input type="radio" name="outcome"> Referred</label>
-                    <label><input type="radio" name="outcome"> Expired</label>
+                    <label><input type="radio" name="outcome" disabled> Successfully Discharged</label>
+                    <label><input type="radio" name="outcome" disabled> LAMA</label>
+                    <label><input type="radio" name="outcome" disabled> Referred</label>
+                    <label><input type="radio" name="outcome" checked disabled> Ongoing care (still admitted)</label>
                 </div>
                 <div class="field-label">IN CASE OF DEATH: Most Relevant Cause</div>
-                <select class="field-value" style="width:100%;">
-                    <option>-- Select --</option>
-                    <option>RDS</option><option>MAS</option><option>HIE/Asphyxia</option><option>Sepsis</option><option>Pneumonia</option><option>Congenital Malformation</option><option>ELBW</option><option>Extreme Prematurity</option>
+                <select class="field-value" style="width:100%;" disabled>
+                    <option>-- Not applicable --</option>
                 </select>
             </div>
         </div>
@@ -460,7 +400,7 @@
                 <i class="fas fa-user-md" style="font-size:2.4rem; color:#1f6eaf;"></i>
                 <div><strong>Dr. Aryan Sharma</strong><br><span style="color:#55738e;">Senior Pediatrician</span></div>
             </div>
-            <div class="badge-outcome"><i class="far fa-calendar-alt"></i> Record date: 2026-04-09</div>
+            <div class="badge-outcome"><i class="far fa-calendar-alt"></i> Record date: 2026-04-09 · 10:30 AM</div>
         </div>
         <div style="margin-top:20px; font-size:0.8rem; color:#6a8aa3; text-align:right;">© 2024 CareCore Hospital Information Systems. All rights reserved.</div>
     </div>
