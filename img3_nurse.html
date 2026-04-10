@@ -144,6 +144,7 @@
             border-radius: 28px;
             padding: 28px 30px;
             margin-bottom: 28px;
+			flex: 1;
             border: 1px solid #e6edf6;
         }
 
@@ -165,7 +166,6 @@
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
             gap: 24px 30px;
         }
 
@@ -302,7 +302,8 @@
             Complete the form below to register a newborn in the system. Ensure all medical and admission details are cross-checked with the delivery records.
         </div>
 
-        <!-- BIRTH DETAILS -->
+        <div style="display:flex;gap:15px">
+		<!-- BIRTH DETAILS -->
         <div class="form-section">
             <div class="section-header">
                 <i class="fas fa-baby-carriage"></i>
@@ -384,7 +385,7 @@
                 <i class="fas fa-hospital-user"></i>
                 <span>Admission Details</span>
             </div>
-            <div class="form-grid">
+            <div class="form-grid" style="display:flex;flex-direction:column;">
                 <div class="input-group">
                     <label class="input-label">Assigned Doctor</label>
                     <select class="input-field">
@@ -408,6 +409,7 @@
                 </div>
             </div>
         </div>
+		</div>
 
         <!-- actions -->
         <div class="form-footer">
