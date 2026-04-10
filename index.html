@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
 <title>CareCore · Empowered Healthcare</title>
+<link rel="stylesheet" href="index.css">
 <!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,19 +108,21 @@
  
         /* RIGHT LOGIN PANEL */
         .login-panel {
-            padding: 48px 44px;
-            background: #ffffff;
+            padding: 18px 36px;
+			background: #ffffff;
+			width: 80%;
+			margin: 0 auto;
         }
  
         .welcome-header {
-            margin-bottom: 32px;
+            margin-bottom: 20px;
+			text-align: center;
         }
  
         .welcome-header h2 {
             font-size: 2rem;
             font-weight: 700;
             color: #0f3147;
-            margin-bottom: 8px;
         }
  
         .welcome-sub {
@@ -131,21 +134,22 @@
         .role-toggle {
             display: flex;
             gap: 16px;
-            margin-bottom: 28px;
+            margin-bottom: 15px;
             background: #f2f6fc;
             padding: 6px;
             border-radius: 60px;
-            width: fit-content;
+            justify-self: center;
         }
  
         .role-option {
-            padding: 10px 28px;
+            padding: 6px 20px;
             border-radius: 40px;
             font-weight: 600;
             font-size: 1rem;
             cursor: default;
             color: #3b5f7a;
             transition: all 0.1s;
+			cursor: pointer;
         }
  
         .role-option.active {
@@ -155,23 +159,22 @@
         }
  
         .input-group {
-            margin-bottom: 24px;
+            margin-bottom: 12px;
         }
  
         .input-label {
             font-weight: 600;
             font-size: 0.9rem;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             color: #1e405b;
             display: block;
         }
  
         .input-field {
             width: 100%;
-            padding: 16px 18px;
-            border: 1.8px solid #d9e2ec;
+            padding: 13px 10px;
+            border: 1px solid #d9e2ec;
             border-radius: 20px;
-            font-size: 1rem;
             background: #fbfdff;
             transition: border 0.2s, box-shadow 0.2s;
         }
@@ -200,9 +203,8 @@
             background: #eaf1f9;
             border: 1.8px solid #d0dce8;
             border-radius: 20px;
-            padding: 0 22px;
-            height: 58px;
-            font-weight: 600;
+            padding: 0 20px;
+            height: 42px;
             color: #1f4e79;
             white-space: nowrap;
             display: flex;
@@ -215,7 +217,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 24px 0 32px;
+            margin: 15px 0;
         }
  
         .remember {
@@ -239,9 +241,8 @@
             color: white;
             border: none;
             border-radius: 60px;
-            padding: 18px 24px;
-            font-weight: 700;
-            font-size: 1.2rem;
+            padding: 10px 24px;
+            font-size: 16px;
             cursor: default;
             border: 1px solid #255e83;
             transition: background 0.15s;
@@ -258,7 +259,7 @@
         }
  
         .footer-links {
-            margin-top: 32px;
+            margin-top: 10px;
             display: flex;
             gap: 32px;
             font-size: 0.8rem;
@@ -306,7 +307,7 @@
 <!-- LEFT: Empowered Healthcare -->
 <div class="brand-panel">
 <div>
-<h1>Empowered <br>Healthcare <span class="brand-highlight">Every Pulse Matters.</span></h1>
+<h1>Empowered Healthcare <span class="brand-highlight">Every Pulse Matters.</span></h1>
 <div class="brand-desc">Access patient records, manage facility logistics, and coordinate care through our unified digital platform.</div>
 </div>
 <div class="secure-badge">
@@ -326,14 +327,14 @@
     <!-- RIGHT: Login form -->
 <div class="login-panel">
 <div class="welcome-header">
-<h2>Welcome back</h2>
+<h2>Welcome</h2>
 <div class="welcome-sub">Enter your credentials to manage your facility.</div>
 </div>
  
         <!-- Role selector: Doctor / Nurse -->
 <div class="role-toggle">
-<span class="role-option"><i class="fas fa-user-md" style="margin-right: 8px;"></i>Doctor</span>
-<span class="role-option active"><i class="fas fa-user-nurse"></i> Nurse</span>
+<span class="role-option" id="doctorToggle"><i class="fas fa-user-md" style="margin-right: 8px;"></i>Doctor</span>
+<span class="role-option active" id="nurseToggle"><i class="fas fa-user-nurse"></i> Nurse</span>
 </div>
  
         <!-- Select Healthcare Facility -->
@@ -350,14 +351,14 @@
         <!-- Username or Mobile Number -->
 <div class="input-group">
 <label class="input-label">Username or Mobile Number</label>
-<input class="input-field" type="text" placeholder="e.g. nurse_742 or 98XXXXXXXXX" value="nurse_spandan">
+<input class="input-field" type="text" placeholder="e.g. nurse_742 or 98XXXXXXXXX">
 </div>
  
         <!-- Password or OTP -->
 <div class="input-group">
 <label class="input-label">Password or OTP</label>
 <div class="password-row">
-<input class="input-field" type="password" placeholder="••••••••" value="dummypass" style="flex:1;">
+<input class="input-field" type="password" style="flex:1;">
 <span class="otp-btn"><i class="far fa-paper-plane"></i> Request OTP</span>
 </div>
 </div>
@@ -371,7 +372,7 @@
 </div>
  
         <!-- Login button -->
-<a href="img2_nurse.html" class="login-btn"><i class="fas fa-arrow-right-to-bracket"></i> Login to Portal</a>
+<a id="loginBtn" class="login-btn"><i class="fas fa-arrow-right-to-bracket"></i> Login to Portal</a>
  
         <!-- Footer links -->
 <div class="footer-links">
